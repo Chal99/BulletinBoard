@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.default');
+});
+
+Route::get('/postlists', function () {
+    return view('posts.index');
+});
+
+Route::get('/userlists', function () {
+    return view('users.index');
 });
