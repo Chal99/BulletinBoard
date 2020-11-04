@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('layouts.default');
 });
 
-Route::get('/postlists', function () {
+Route::get('/postlist', function () {
     return view('posts.index');
 });
 
-Route::get('/userlists', function () {
+Route::get('/userlist', function () {
     return view('users.index');
 });
