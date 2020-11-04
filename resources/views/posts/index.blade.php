@@ -1,5 +1,13 @@
 @extends('layouts.default')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap.min') }}">
+
+<script src="{{ asset('js/lib/jquery-3.5.1.js') }}"></script>
+<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/post-list.js') }}"></script>
+
+
 <div class="card m-5">
     <div class="card-header">
     Post Lists
@@ -30,7 +38,7 @@
             </div>
         </div>
     </div>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table id="post-list-table" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Post Title</th>

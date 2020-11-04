@@ -1,0 +1,16 @@
+div#post-list-table_wrapper.dataTables_wrapper.dt-bootstrap4 .row:nth-child(2){
+    overflow-x:scroll;
+}
+div#post-list-table_wrapper.dataTables_wrapper.dt-bootstrap4 .row:nth-child(3){
+   margin-top:20px;
+}
+div#post-list-table_filter.dataTables_filter{
+    float:right;
+}
+div#post-list-table_paginate.dataTables_paginate.paging_simple_numbers{
+    float:right;
+}
+input{
+    width:149px;
+    height:40px;
+}

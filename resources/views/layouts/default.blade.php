@@ -16,15 +16,7 @@
 
         </div>
 
-        <!-- <footer>
-            @include('includes.footer')
-        </footer> -->
-
     </div>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-    </script>
+    
 </body>
 </html>

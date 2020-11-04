@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Laravel</a>
+                <a class="nav-link" href="#">Bulletin Board</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Users</a>
