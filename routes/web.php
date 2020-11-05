@@ -29,6 +29,10 @@ Route::get('/post/edit', function () {
     return view('posts.edit');
 })->name('postedit');
 
+Route::get('/post/confirmpost', function () {
+    return view('posts.confirmpost');
+})->name('postconfirm');
+
 Route::get('/userlist', function () {
     return view('users.index');
 });

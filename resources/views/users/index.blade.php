@@ -1,11 +1,6 @@
 @extends('layouts.default')
 @section('content')
-
 <link rel="stylesheet" href="{{ asset('css/listdatatable.css') }}">
-
-<script src="{{ asset('js/lib/jquery-3.5.1.js') }}"></script>
-<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -118,26 +113,10 @@
                     <td>2009/02/27</td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Created User</th>
-                    <th>Type</th>
-                    <th>Phone</th>
-                    <th>Date Of Birth</th>
-                    <th>Address</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Operation</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="UserDetailModel">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -223,7 +202,6 @@
                     <label for="">Example</label>
                 </div>
             </div>
-            
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

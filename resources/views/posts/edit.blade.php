@@ -6,7 +6,7 @@
 
 <div class="card m-5">
     <div class="card-header">
-        Create Post
+        Edit Post
     </div>
     <div class="card-body">
         <form>
@@ -20,10 +20,6 @@
             </div>
             <label for="" class="mr-5"> Status </label>
             <input type="checkbox" name="postedit-status" checked>
-            <div class="form-group d-flex justify-content-end">
-                <button type="button" class="btn btn-primary mr-5" data-dismiss="modal">Create</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear</button>
-            </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="button" class="btn btn-primary mr-5" data-dismiss="modal">Edit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear</button>
