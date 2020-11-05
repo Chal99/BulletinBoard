@@ -8,7 +8,7 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Title</label>
+                <label for="exampleFormControlInput1">Title </label>
                 <input type="email" class="form-control" id="" placeholder="Post4">
             </div>
             <div class="form-group">

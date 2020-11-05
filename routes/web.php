@@ -36,3 +36,4 @@ Route::get('/post/confirmpost', function () {
 Route::get('/userlist', function () {
     return view('users.index');
 });
+
