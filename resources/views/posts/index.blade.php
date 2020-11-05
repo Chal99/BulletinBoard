@@ -19,7 +19,7 @@
                     <button type="button" class="btn btn-outline-primary"> Search </button>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-outline-primary" href="{{ url('postcreate') }}"> Create </button>
+                    <a class="btn btn-outline-primary" href="{{route('postcreate')}}"> Create </a>
                 </div>
                 <div class="col-md-2">
                     <button  type="button" class="btn btn-outline-primary"> Upload </button>
