@@ -33,6 +33,11 @@ Route::get('/post/confirmpost', function () {
     return view('posts.confirmpost');
 })->name('postconfirm');
 
+Route::get('/changepassword', function () {
+    return view('posts.change-password');
+})->name('changepassword');
+
+
 Route::get('/userlist', function () {
     return view('users.index');
 });

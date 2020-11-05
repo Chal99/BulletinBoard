@@ -25,7 +25,6 @@
             <div class="col-md-4">
                 <button type="button" class="btn btn-primary">Search</button>
             </div>
-            
         </div>
     </div>
     <div class="row"  style="overflow-x:auto;">
@@ -46,7 +45,6 @@
                 </tr>
             </thead>
             <tbody>
-                
                 <tr>
                     <td><a href="" data-toggle="modal" data-target="#UserDetailModel">Lael Greer</a></td>
                     <td>Systems Administrator</td>
