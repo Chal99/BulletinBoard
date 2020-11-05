@@ -55,7 +55,7 @@
                     <td>Systems Administrator</td>
                     <td>London</td>
                     <td>21</td>
-                    <td>2009/02/27</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PostDetailModel">Detail</button></td>
                 </tr>
                 <tr>
                     <td>Jonas Alexander</td>
@@ -105,6 +105,76 @@
             </tfoot>
         </table>
     </div>
+
   </div>
+</div>
+
+<div  class="modal fade" id="PostDetailModel">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Post Detail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Title</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Description</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Status</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Created User</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
+                <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                <div class="col-sm-8">
+                    <label for="">Example</label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div>
 </div>
 @endsection
