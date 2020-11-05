@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('layouts.default');
 });
 
-Route::get('/postlist', function () {
-    return view('posts.index');
-});
+// Web Routes for Post
+Route::get('/postlist', function () {return view('posts.index');})->name('postlist');
+Route::get('/post/create', function () {return view('posts.create');})->name('postcreate');
+Route::get('/post/edit', function () {return view('posts.edit');})->name('postedit');
+Route::get('/post/confirmpost', function () {return view('posts.confirmpost');})->name('postconfirm');
+Route::get('/changepassword', function () {return view('posts.change-password');})->name('changepassword');
 
-Route::get('/userlist', function () {
-    return view('users.index');
-});
+// Web Routes for User
+Route::get('/userlist', function () { return view('users.index');})->name('userlist');
+Route::get('/user/create', function () {return view('users.create');})->name('usercreate');
+Route::get('/user/edit', function () {return view('users.edit');})->name('useredit');
+
