@@ -27,7 +27,7 @@
                 <button type="button" class="btn btn-outline-primary"> Search </button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-outline-primary"> Create </button>
+                <button type="button" class="btn btn-outline-primary" href="{{ url('postcreate') }}"> Create </button>
             </div>
             <div class="col-md-2">
                 <button  type="button" class="btn btn-outline-primary"> Upload </button>
@@ -51,11 +51,11 @@
             <tbody>
                 
                 <tr>
-                    <td>Lael Greer</td>
+                    <td><a href="" data-toggle="modal" data-target="#PostDetailModel">Lael Greer</a></td>
                     <td>Systems Administrator</td>
                     <td>London</td>
                     <td>21</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PostDetailModel">Detail</button></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Jonas Alexander</td>
@@ -172,7 +172,6 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
         </div>
     </div>

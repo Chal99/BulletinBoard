@@ -21,6 +21,14 @@ Route::get('/postlist', function () {
     return view('posts.index');
 });
 
+Route::get('/post/create', function () {
+    return view('posts.create');
+})->name('postcreate');
+
+Route::get('/post/edit', function () {
+    return view('posts.edit');
+})->name('postedit');
+
 Route::get('/userlist', function () {
     return view('users.index');
 });

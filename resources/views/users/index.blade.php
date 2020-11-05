@@ -53,7 +53,7 @@
             <tbody>
                 
                 <tr>
-                    <td>Lael Greer</td>
+                    <td><a href="" data-toggle="modal" data-target="#UserDetailModel">Lael Greer</a></td>
                     <td>Systems Administrator</td>
                     <td>London</td>
                     <td>21</td>
@@ -63,7 +63,7 @@
                     <td>London</td>
                     <td>21</td>
                     <td>2009/02/27</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#UserDetailModel">Detail</button></td>
+                    <td>2009/02/27</td>
                 </tr>
                 <tr>
                     <td>Lael Greer</td>
