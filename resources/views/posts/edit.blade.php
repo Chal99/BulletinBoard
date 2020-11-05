@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-<link href="{{ asset('css/postedit.css') }}" rel="stylesheet">
+<link href="{{ asset('css/post.css') }}" rel="stylesheet">
 <link href="{{ asset('bootstrap-switch-master\dist\css\bootstrap4\bootstrap-switch.css') }}" rel="stylesheet">
 <script src="{{ asset('bootstrap-switch-master\dist\js\bootstrap-switch.js') }}"></script>
 <script src="{{ asset('js/postedit.js') }}"></script>

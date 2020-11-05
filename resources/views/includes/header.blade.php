@@ -5,10 +5,10 @@
                 <a class="nav-link" href="#">Bulletin Board</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" href="{{route('userlist')}}">Users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Posts</a>
+                <a class="nav-link" href="{{route('postlist')}}">Posts</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

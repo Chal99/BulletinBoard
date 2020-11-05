@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-<link href="{{ asset('css/postcreate.css') }}" rel="stylesheet">
+<link href="{{ asset('css/post.css') }}" rel="stylesheet">
 
 <div class="card m-5">
     <div class="card-header">

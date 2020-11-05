@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/postlist', function () {
     return view('posts.index');
-});
+})->name('postlist');
 
 Route::get('/post/create', function () {
     return view('posts.create');
@@ -40,5 +40,5 @@ Route::get('/changepassword', function () {
 
 Route::get('/userlist', function () {
     return view('users.index');
-});
+})->name('userlist');
 
