@@ -8,7 +8,7 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="">CSV File :</label>
+                <label>CSV File :</label>
                 <input type="file">
             </div>
             <div class="form-group d-flex justify-content-end">

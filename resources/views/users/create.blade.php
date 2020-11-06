@@ -8,20 +8,20 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="">Name</label>
-                <input type="email" class="form-control" id="" placeholder="">
+                <label>Name</label>
+                <input type="email" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Email Address</label>
-                <textarea class="form-control" id="" rows="3" placeholder=""></textarea>
+                <label>Email Address</label>
+                <textarea class="form-control" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" id="" placeholder="">
+                <label>Password</label>
+                <input type="password" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Confirm Password</label>
-                <input type="password" class="form-control" id="" placeholder="">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control">
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
@@ -31,20 +31,20 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="">Phone</label>
-                <input type="email" class="form-control" id="" placeholder="">
+                <label>Phone</label>
+                <input type="email" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Date Of Birth</label>
-                <input type="date" class="form-control" id="" placeholder="">
+                <label>Date Of Birth</label>
+                <input type="date" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Address</label>
-                <textarea class="form-control" id="" rows="3"></textarea>
+                <label>Address</label>
+                <textarea class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label for="">Profile</label>
-                <input type="file" class="form-control-file" id="">
+                <label>Profile</label>
+                <input type="file" class="form-control-file">
             </div>
             <div class="form-group d-flex justify-content-end">
                 <a class="btn btn-primary mr-5" data-dismiss="modal" href="{{route('confirm-user')}}">Register</a>
