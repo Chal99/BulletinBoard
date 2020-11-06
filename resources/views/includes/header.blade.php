@@ -13,7 +13,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Create User</a>
+                <a class="nav-link" href="{{route('usercreate')}}">Create User</a>
             </li>
             
             <li class="nav-item dropdown">
@@ -21,7 +21,7 @@
                 Admin
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
                     <a class="dropdown-item" href="#">Logout</a>
                 </div>
             </li>
