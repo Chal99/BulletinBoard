@@ -22,7 +22,7 @@
                     <a class="btn btn-outline-primary" href="{{route('postcreate')}}"> Create </a>
                 </div>
                 <div class="col-md-2">
-                    <button  type="button" class="btn btn-outline-primary"> Upload </button>
+                    <a class="btn btn-outline-primary" href="{{route('upload-post')}}"> Upload </a>
                 </div>
                 <div class="col-md-2">
                     <button  type="button" class="btn btn-outline-primary"> Download </button>

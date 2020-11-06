@@ -7,26 +7,38 @@
     User Lists
     </div>
     <div class="card-body">
-        <div class="container mb-5">
+        <div class="container mb-4">
             <div class="row">
                 <div class="col-md-2">
-                    <input type="text" placeholder="Ender Name" class="mr-2">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control form-control-sm mr-2">
+                    </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" placeholder="Ender Email">
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control form-control-sm mr-2">
+                    </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="date">
+                    <div class="form-group">
+                        <label for="">From</label>
+                        <input type="date" class="form-control form-control-sm mr-2">
+                    </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="date">
+                    <div class="form-group">
+                        <label for="">To</label>
+                        <input type="date" class="form-control form-control-sm mr-2">
+                    </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-4">
                     <button type="button" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </div>
-        <div class="row"  style="overflow-x:auto;">
+        <div class="row">
             <table id="post-list-table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -55,7 +67,7 @@
                         <td>London</td>
                         <td>21</td>
                         <td>2009/02/27</td>
-                        <td>2009/02/27</td>
+                        <td><a class="btn btn-warning" href="{{route('useredit')}}">Edit</a></td>
                     </tr>
                     <tr>
                         <td>Lael Greer</td>
