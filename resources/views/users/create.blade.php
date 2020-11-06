@@ -47,8 +47,8 @@
                 <input type="file" class="form-control-file">
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary mr-5" data-dismiss="modal" href="{{route('confirm-user')}}">Register</a>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+                <a class="btn btn-primary mr-5" href="{{route('confirm-user')}}">Register</a>
+                <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
         </form>
     </div>

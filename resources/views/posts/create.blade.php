@@ -9,16 +9,16 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="">Title <span>*</span></label>
-                <input type="email" class="form-control" id="" placeholder="">
+                <label>Title <span>*</span></label>
+                <input type="text" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-                <label for="">Descripption <span>*</span></label>
-                <textarea class="form-control" id="" rows="3"></textarea>
+                <label >Descripption <span>*</span></label>
+                <textarea class="form-control" rows="3"></textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <a type="button" class="btn btn-primary mr-5" href="{{route('confirm-post')}}">Create</a>
-                <button type="button" class="btn btn-secondary">Clear</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
         </form>
     </div>

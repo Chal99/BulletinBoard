@@ -101,52 +101,52 @@
             </div>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Title</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Title</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Description</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Description</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Status</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Status</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Created User</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Created User</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
             </div>

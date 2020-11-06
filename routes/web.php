@@ -22,7 +22,7 @@ Route::get('/postlist', function () {return view('posts.index');})->name('postli
 Route::get('/post/create', function () {return view('posts.create');})->name('postcreate');
 Route::get('/post/edit', function () {return view('posts.edit');})->name('postedit');
 Route::get('/post/confirmpost', function () {return view('posts.confirm-post');})->name('confirm-post');
-Route::get('/post/uploadmpost', function () {return view('posts.upload-post');})->name('upload-post');
+Route::get('/post/uploadpost', function () {return view('posts.upload-post');})->name('upload-post');
 Route::get('/changepassword', function () {return view('posts.change-password');})->name('change-password');
 
 // Web Routes for User

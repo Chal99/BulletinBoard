@@ -12,18 +12,18 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="">Title  <span>*</span></label>
-                <input type="email" class="form-control" id="" placeholder="">
+                <label>Title  <span>*</span></label>
+                <input type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Descripption  <span>*</span></label>
-                <textarea class="form-control" id="" rows="3"></textarea>
+                <label> Descripption  <span>*</span></label>
+                <textarea class="form-control" rows="3"></textarea>
             </div>
-            <label for="" class="mr-5"> Status </label>
+            <label class="mr-5"> Status </label>
             <input type="checkbox" name="postedit-status" checked>
             <div class="form-group d-flex justify-content-end">
-                <button type="button" class="btn btn-primary mr-5" data-dismiss="modal">Edit</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-primary mr-5">Edit</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
         </form>
     </div>

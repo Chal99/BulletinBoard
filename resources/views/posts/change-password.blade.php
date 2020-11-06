@@ -9,18 +9,18 @@
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Current Password </label>
-                <input type="password" class="form-control" id="">
+                <input type="password" class="form-control">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">New Password</label>
-                <input type="password" class="form-control" id="">
+                <input type="password" class="form-control">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">New Confirm Password</label>
-                <input type="password" class="form-control" id="">
+                <input type="password" class="form-control">
             </div>
             <div class="form-group d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Update Password</button>
+                <button type="button" class="btn btn-primary">Update Password</button>
             </div>
         </form>
     </div>

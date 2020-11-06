@@ -14,19 +14,19 @@
         </div>
         <div class="form-group">
             <label>Name</label>
-            <input type="email" class="form-control"placeholder="Example">
+            <input type="text" class="form-control" placeholder="Rosy">
         </div>
         <div class="form-group">
             <label>Email Address</label>
-            <textarea class="form-control" rows="3"  placeholder="Example"></textarea>
+            <textarea class="form-control" rows="3" placeholder="rosy@gmail.com"></textarea>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="email" class="form-control" placeholder="Example">
+            <input type="password" class="form-control" placeholder="asdwer12">
         </div>
         <div class="form-group">
             <label>Confirm Password</label>
-            <input type="email" class="form-control" placeholder="Example">
+            <input type="password" class="form-control" placeholder="asdwer12">
         </div>
         <div class="form-group">
             <label for="type-selected">Type</label>
@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             <label>Phone</label>
-            <input type="email" class="form-control" placeholder="9999">
+            <input type="text" class="form-control" placeholder="9999">
         </div>
         <div class="form-group">
             <label>Date Of Birth</label>
@@ -44,12 +44,13 @@
         </div>
         <div class="form-group">
             <label>Address</label>
-            <textarea class="form-control" rows="3" placeholder="Example"></textarea>
+            <textarea class="form-control" rows="3" placeholder="Building N.12/3,Yangon"></textarea>
         </div>
         <div class="form-group d-flex justify-content-end">
-            <button type="button" class="btn btn-primary mr-5" data-dismiss="modal">Confirm</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+            <button type="button" class="btn btn-primary mr-5">Confirm</button>
+            <a class="btn btn-secondary" href="{{route('usercreate')}}">Cancle</a>
         </div>
     </div>
 </div>
+
 @endsection

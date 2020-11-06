@@ -142,73 +142,73 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Name</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8">
+                        <label>Example</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8">
+                        <label>Example</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Type</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Email</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Phone</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Address</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Created User</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Created User</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <label class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8">
-                        <label for="">Example</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
-                        <label for="">Example</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="" class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
-                    <label for="" class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
-                        <label for="">Example</label>
+                        <label>Example</label>
                     </div>
                 </div>
             </div>
