@@ -67,7 +67,10 @@
                         <td>London</td>
                         <td>21</td>
                         <td>2009/02/27</td>
-                        <td><a class="btn btn-warning" href="{{route('useredit')}}">Edit</a></td>
+                        <td class="d-flex justify-content-center p-3">
+                            <a class="btn btn-warning mr-3" href="{{route('useredit')}}">Edit</a>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#UserDeleteModel">Delete</a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Lael Greer</td>
@@ -124,13 +127,13 @@
                 </tbody>
             </table>
         </div>
-  </div>
+    </div>
 </div>
 <div class="modal fade" id="UserDetailModel">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">User Detail</h5>
+                <h5 class="modal-title font-weight-bold">User Detail</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -144,70 +147,70 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label for="">Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 col-form-label">
                         <label>Example</label>
                     </div>
                 </div>
@@ -218,4 +221,75 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="UserDeleteModel">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">User Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row ml-1">
+                    <label>Are You Sure Want To Delete User ?</label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">ID</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>001</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>HLA</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>Example</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>Example@gmail.com</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>0992323323</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>27.2.1999</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
+                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                    <div class="col-sm-8 col-form-label">
+                        <label>Example</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger mr-3">Delete</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

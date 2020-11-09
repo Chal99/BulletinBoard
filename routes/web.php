@@ -31,7 +31,7 @@ Route::get('/user/create', function () {return view('users.create');})->name('us
 Route::get('/user/edit', function () {return view('users.edit');})->name('useredit');
 Route::get('/user/confirmuser', function () {return view('users.confirm-user');})->name('confirm-user');
 
-// Web Routes for User
+// Web Routes for Profile
 Route::get('/profile', function () {return view('profile.index');})->name('profile');
 Route::get('/profile/edit', function () {return view('profile.edit');})->name('profileedit');
 
