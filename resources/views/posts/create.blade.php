@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-                <label >Descripption <span>*</span></label>
+                <label>Descripption <span>*</span></label>
                 <textarea class="form-control" rows="3"></textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
