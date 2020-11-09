@@ -2,7 +2,7 @@
 @section('content')
 <div class="card m-5">
     <div class="card-header">
-    Post Lists
+        Post Lists
     </div>
     <div class="card-body">
         <div class="container d-flex justify-content-end">
@@ -19,13 +19,13 @@
                     <button type="button" class="btn btn-outline-primary"> Search </button>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-outline-primary" href="{{route('postcreate')}}"> Create </a>
+                    <a class="btn btn-outline-primary" href="{{route('post-create')}}"> Create </a>
                 </div>
                 <div class="col-md-2">
                     <a class="btn btn-outline-primary" href="{{route('upload-post')}}"> Upload </a>
                 </div>
                 <div class="col-md-2">
-                    <button  type="button" class="btn btn-outline-primary"> Download </button>
+                    <button type="button" class="btn btn-outline-primary"> Download </button>
                 </div>
             </div>
         </div>
@@ -40,14 +40,14 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 <tr>
                     <td><a href="" data-toggle="modal" data-target="#PostDetailModel">Lael Greer</a></td>
                     <td>Systems Administrator</td>
                     <td>London</td>
                     <td>21</td>
                     <td class="d-flex justify-content-center p-3">
-                        <a class="btn btn-warning mr-3" href="{{route('postedit')}}">Edit</a>
+                        <a class="btn btn-warning mr-3" href="{{route('post-edit')}}">Edit</a>
                         <a class="btn btn-danger" data-toggle="modal" data-target="#PostDeleteModel">Delete</a>
                     </td>
                 </tr>

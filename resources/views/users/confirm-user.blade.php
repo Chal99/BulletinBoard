@@ -48,7 +48,7 @@
         </div>
         <div class="form-group d-flex justify-content-end">
             <button type="button" class="btn btn-primary mr-5">Confirm</button>
-            <a class="btn btn-secondary" href="{{route('usercreate')}}">Cancel</a>
+            <a class="btn btn-secondary" href="{{route('user-create')}}">Cancel</a>
         </div>
     </div>
 </div>

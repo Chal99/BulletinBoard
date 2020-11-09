@@ -68,7 +68,7 @@
                         <td>21</td>
                         <td>2009/02/27</td>
                         <td class="d-flex justify-content-center p-3">
-                            <a class="btn btn-warning mr-3" href="{{route('useredit')}}">Edit</a>
+                            <a class="btn btn-warning mr-3" href="{{route('user-edit')}}">Edit</a>
                             <a class="btn btn-danger" data-toggle="modal" data-target="#UserDeleteModel">Delete</a>
                         </td>
                     </tr>
