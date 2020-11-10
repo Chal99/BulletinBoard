@@ -15,13 +15,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 255)->unique()->nullable();
-            $table->string('description')->nullable();
-            $table->integer('status')->default('1')->nullable();
-            $table->unsignedInteger('create_user_id')->nullable();
-            $table->unsignedInteger('updated_user_id')->nullable();
-            $table->integer('deleted_user_id');
-            $table->date('deleted_at');
+            $table->string('title', 255)->unique();
+            $table->string('description');
+            $table->integer('status')->default('1');
+            $table->unsignedInteger('create_user_id');
+            $table->unsignedInteger('updated_user_id');
+            $table->integer('deleted_user_id')->nullable();
+            $table->date('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('create_user_id')->references('id')->on('users');
