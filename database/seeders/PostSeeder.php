@@ -23,6 +23,8 @@ class PostSeeder extends Seeder
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ],
             [
                 'title' => Str::random(10),
@@ -30,6 +32,8 @@ class PostSeeder extends Seeder
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ],
             [
                 'title' => Str::random(10),
@@ -37,6 +41,8 @@ class PostSeeder extends Seeder
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ]
         );
     }

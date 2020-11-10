@@ -28,6 +28,8 @@ class UserSeeder extends Seeder
                 'dob' => '1998:9:27 20:12:32',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ],
             [
                 'name' => Str::random(3),
@@ -40,6 +42,8 @@ class UserSeeder extends Seeder
                 'dob' => '1998-9-27',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ],
             [
                 'name' => Str::random(3),
@@ -52,6 +56,8 @@ class UserSeeder extends Seeder
                 'dob' => '1998-9-27',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
+                'deleted_user_id' => null,
+                'deleted_at' => null,
             ]
         );
     }
