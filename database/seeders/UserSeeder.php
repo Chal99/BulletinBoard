@@ -18,9 +18,9 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert(
             [
-                'name' => Str::random(10),
-                'email' => Str::random(20) . '@gmail.com',
-                'password' => Hash::make('password'),
+                'name' => 'hlahla',
+                'email' => 'hlahla@gmail.com',
+                'password' => 'asd123',
                 'profile' => '',
                 'type' => '1',
                 'phone' => '094234234',
@@ -30,30 +30,34 @@ class UserSeeder extends Seeder
                 'updated_user_id' => '1',
                 'deleted_user_id' => null,
                 'deleted_at' => null,
-            ],
+            ]
+        );
+        DB::table('users')->insert(
             [
-                'name' => Str::random(3),
-                'email' => Str::random(3) . '@gmail.com',
-                'password' => Hash::make('password'),
+                'name' => 'tintin',
+                'email' => 'tntin@gmail.com',
+                'password' => 'asd123',
                 'profile' => '',
                 'type' => '1',
                 'phone' => '094234234',
-                'address' => 'Yangon',
-                'dob' => '1998-9-27',
+                'address' => 'Mandalay',
+                'dob' => '1998:9:27 20:12:32',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
                 'deleted_user_id' => null,
                 'deleted_at' => null,
-            ],
+            ]
+        );
+        DB::table('users')->insert(
             [
-                'name' => Str::random(3),
-                'email' => Str::random(3) . '@gmail.com',
-                'password' => Hash::make('password'),
+                'name' => 'winwin',
+                'email' => 'winwin@gmail.com',
+                'password' => 'asd123',
                 'profile' => '',
                 'type' => '1',
                 'phone' => '094234234',
-                'address' => 'Yangon',
-                'dob' => '1998-9-27',
+                'address' => 'Naypyitaw',
+                'dob' => '1998:9:27 20:12:32',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
                 'deleted_user_id' => null,

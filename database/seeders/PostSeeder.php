@@ -18,26 +18,30 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert(
             [
-                'title' => Str::random(10),
-                'description' => Str::random(20),
+                'title' => 'title1',
+                'description' => 'this is description',
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
                 'deleted_user_id' => null,
                 'deleted_at' => null,
-            ],
+            ]
+        );
+        DB::table('posts')->insert(
             [
-                'title' => Str::random(10),
-                'description' => Str::random(20),
+                'title' => 'title2',
+                'description' => 'this is description',
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
                 'deleted_user_id' => null,
                 'deleted_at' => null,
-            ],
+            ]
+        );
+        DB::table('posts')->insert(
             [
-                'title' => Str::random(10),
-                'description' => Str::random(20),
+                'title' => 'title3',
+                'description' => 'this is description',
                 'status' => '1',
                 'create_user_id' => '1',
                 'updated_user_id' => '1',
