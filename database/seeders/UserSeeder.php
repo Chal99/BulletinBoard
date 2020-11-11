@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+
 class UserSeeder extends Seeder
 {
     /**
@@ -20,8 +21,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'hlahla',
                 'email' => 'hlahla@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
+                'password' => Hash::make('asd123'),
+                'profile' => 'sdfs',
                 'type' => '1',
                 'phone' => '094234234',
                 'address' => 'Yangon',
@@ -36,8 +37,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'tintin',
                 'email' => 'tntin@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
+                'password' => Hash::make('asd123'),
+                'profile' => 'sdfsdf',
                 'type' => '1',
                 'phone' => '094234234',
                 'address' => 'Mandalay',
@@ -52,8 +53,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'winwin',
                 'email' => 'winwin@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
+                'password' => Hash::make('asd123'),
+                'profile' => 'dsfsd',
                 'type' => '1',
                 'phone' => '094234234',
                 'address' => 'Naypyitaw',

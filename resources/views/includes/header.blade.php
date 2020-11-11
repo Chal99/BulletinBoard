@@ -12,7 +12,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('user-create')}}">Create User</a>
+            <a class="nav-link" href="{{route('register')}}">Create User</a>
         </li>
 
         <li class="nav-item dropdown">

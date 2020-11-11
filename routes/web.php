@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,9 +41,7 @@ Route::get('/change-password', function () {
 Route::get('/userlist', function () {
     return view('users.index');
 })->name('user-list');
-Route::get('/user/create', function () {
-    return view('users.create');
-})->name('user-create');
+
 Route::get('/user/edit', function () {
     return view('users.edit');
 })->name('user-edit');
@@ -58,3 +56,7 @@ Route::get('/profile', function () {
 Route::get('/profile/edit', function () {
     return view('profile.edit');
 })->name('profile-edit');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
