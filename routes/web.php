@@ -18,17 +18,15 @@ Route::get('/', function () {
     return view('posts.index');
 });
 
-// Web Routes for Post
-Route::get('/postlist', function () {
-    return view('posts.index');
-})->name('post-list');
-
 Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
-Route::group(['middleware' => ['auth']], function () {
     // Web Routes for Post
+    Route::get('/postlist', function () {
+        return view('posts.index');
+    })->name('post-list');
     Route::get('/post/create', function () {
         return view('posts.create');
     })->name('post-create');
