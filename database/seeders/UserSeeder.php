@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+
 class UserSeeder extends Seeder
 {
     /**
@@ -19,10 +20,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'hlahla',
-                'email' => 'hlahla@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
-                'type' => '1',
+                'email' => 'scm.myathetchal@gmail.com',
+                'password' => Hash::make('asd123'),
+                'profile' => 'sdfs',
+                'type' => '0',
                 'phone' => '094234234',
                 'address' => 'Yangon',
                 'dob' => '1998:9:27 20:12:32',
@@ -35,9 +36,9 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'tintin',
-                'email' => 'tntin@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
+                'email' => 'myathetchal.199827@gmail.com',
+                'password' => Hash::make('asd123'),
+                'profile' => 'sdfsdf',
                 'type' => '1',
                 'phone' => '094234234',
                 'address' => 'Mandalay',
@@ -51,9 +52,9 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'winwin',
-                'email' => 'winwin@gmail.com',
-                'password' => 'asd123',
-                'profile' => '',
+                'email' => 'scm.aungpyaesone@gmail.com',
+                'password' => Hash::make('asd123'),
+                'profile' => 'dsfsd',
                 'type' => '1',
                 'phone' => '094234234',
                 'address' => 'Naypyitaw',

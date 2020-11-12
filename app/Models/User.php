@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    public function IsAdmin()
+    {
+        return $this->type ? true : false; // this looks for an admin column in your users table
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +25,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile',
+        'admin',
+        'phone',
+        'address',
+        'dob',
     ];
 
     /**
