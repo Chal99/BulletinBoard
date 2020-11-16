@@ -15,12 +15,6 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
-    }
-
-    public function post_user()
-    {
-        $user_name = User::where('id', $this->create_user_id)->first()->name;
-        return $user_name;
+        return $this->belongsTo(User::class, 'create_user_id');
     }
 }

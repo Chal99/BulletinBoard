@@ -44,7 +44,7 @@
                 <tr>
                     <td><a href="" data-toggle="modal" data-target="#PostDetailModel">{{$post->title}}</a></td>
                     <td>{{$post->description}}</td>
-                    <td>{{$post->post_user()}}</td>
+                    <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
                     <td class="d-flex justify-content-center p-3">
                         <a class="btn btn-warning mr-3" href="{{route('post-edit')}}">Edit</a>
