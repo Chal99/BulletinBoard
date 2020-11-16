@@ -4,6 +4,9 @@ namespace App\Contracts\Dao\Post;
 
 interface PostDaoInterface
 {
-    //get user list
+    /**
+     * Get Post List
+     * @return array postList
+     */
     public function getPostList();
 }

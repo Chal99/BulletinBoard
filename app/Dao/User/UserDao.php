@@ -7,13 +7,13 @@ use App\Models\User;
 
 class UserDao implements UserDaoInterface
 {
-  /**
-   * Get Operator List
-   * @param Object
-   * @return $operatorList
-   */
-  public function getUserList()
-  {
-    return User::get();
-  }
+    /**
+     * Get User List
+     * @param Object
+     * @return $userList
+     */
+    public function getUserList()
+    {
+        return User::get();
+    }
 }

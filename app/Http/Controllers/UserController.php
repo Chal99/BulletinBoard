@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Contracts\Services\User\UserServiceInterface;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    private $userInterface;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(UserServiceInterface $userInterface)
+    {
+        $this->userInterface = $userInterface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +27,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(5);
-        return view('users.index', compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $users = $this->userInterface->getUserList();
+        return view('users.index', [
+            'users' => $users,
+        ]);
     }
 
     /**

@@ -8,11 +8,9 @@ use App\Models\Post;
 class PostDao implements PostDaoInterface
 {
     /**
-     * Get Operator List
-     * @param Object
-     * @return $operatorList
+     * Get Post List
+     * @return array postList
      */
-
     public function getPostList()
     {
         return Post::get();
