@@ -19,10 +19,10 @@
                     <button type="button" class="btn btn-outline-primary"> Search </button>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-outline-primary" href="{{route('post-create')}}"> Create </a>
+                    <a class="btn btn-outline-primary" href=""> Create </a>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-outline-primary" href="{{route('upload-post')}}"> Upload </a>
+                    <a class="btn btn-outline-primary" href=""> Upload </a>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-outline-primary"> Download </button>
@@ -40,52 +40,18 @@
                 </tr>
             </thead>
             <tbody>
-
+                @foreach($posts as $post)
                 <tr>
-                    <td><a href="" data-toggle="modal" data-target="#PostDetailModel">Lael Greer</a></td>
-                    <td>Systems Administrator</td>
-                    <td>London</td>
-                    <td>21</td>
+                    <td><a href="" data-toggle="modal" data-target="#PostDetailModel">{{$post->title}}</a></td>
+                    <td>{{$post->description}}</td>
+                    <td>{{$post->post_user()}}</td>
+                    <td>{{$post->created_at}}</td>
                     <td class="d-flex justify-content-center p-3">
                         <a class="btn btn-warning mr-3" href="{{route('post-edit')}}">Edit</a>
                         <a class="btn btn-danger" data-toggle="modal" data-target="#PostDeleteModel">Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>Jonas Alexander</td>
-                    <td>Developer</td>
-                    <td>San Francisco</td>
-                    <td>30</td>
-                    <td>2010/07/14</td>
-                </tr>
-                <tr>
-                    <td>Shad Decker</td>
-                    <td>Regional Director</td>
-                    <td>Edinburgh</td>
-                    <td>51</td>
-                    <td>2008/11/13</td>
-                </tr>
-                <tr>
-                    <td>Michael Bruce</td>
-                    <td>Javascript Developer</td>
-                    <td>Singapore</td>
-                    <td>29</td>
-                    <td>2011/06/27</td>
-                </tr>
-                <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                </tr>
-                <tr>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
