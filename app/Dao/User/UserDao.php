@@ -9,8 +9,7 @@ class UserDao implements UserDaoInterface
 {
     /**
      * Get User List
-     * @param Object
-     * @return $userList
+     * @return array userList
      */
     public function getUserList()
     {

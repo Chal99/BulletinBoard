@@ -21,8 +21,7 @@ class UserService implements UserServiceInterface
 
     /**
      * Get User List
-     * @param Object
-     * @return $userList
+     * @return array $userList
      */
     public function getUserList()
     {

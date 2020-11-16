@@ -6,6 +6,7 @@ interface UserDaoInterface
 {
     /**
      * Get User List
+     * @return array userList
      */
     public function getUserList();
 }

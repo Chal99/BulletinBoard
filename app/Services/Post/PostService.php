@@ -21,8 +21,7 @@ class PostService implements PostServiceInterface
 
   /**
    * Get post List
-   * @param Object
-   * @return $postList
+   * @return array $postList
    */
   public function getPostList()
   {
