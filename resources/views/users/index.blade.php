@@ -61,7 +61,7 @@
                         <td><a href="" data-toggle="modal" data-target="#UserDetailModel">{{$user->id}}</a></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->posts->title}}</td>
+                        <td>{{$user->create_user_id}}</td>
                         <td>{{$user->type}}</td>
                         <td>{{$user->phone}}</td>
                         <td>{{$user->dob}}</td>

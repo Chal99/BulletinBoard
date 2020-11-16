@@ -16,7 +16,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('layouts.default');
+    return redirect('/post-list');
 });
 
 Auth::routes();
