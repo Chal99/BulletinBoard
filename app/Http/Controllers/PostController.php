@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Contracts\Services\Post\PostServiceInterface;
+use App\Http\Controllers\Controller;
+
 
 class PostController extends Controller
 {
+    private $postInterface;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(PostServiceInterface $postInterface)
+    {
+        $this->postInterface = $postInterface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = $this->postInterface->getPostList();
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('posts.index');
+    return redirect('/post-list');
 });
 
 Auth::routes();
@@ -24,9 +25,10 @@ Auth::routes();
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
     // Web Routes for Post
-    Route::get('/postlist', function () {
-        return view('posts.index');
-    })->name('post-list');
+    // Route::get('/postlist', function () {
+    //     return view('posts.index');
+    // })->name('post-list');
+    Route::get('/post-list', [PostController::class, 'index']);
     Route::get('/post/create', function () {
         return view('posts.create');
     })->name('post-create');
@@ -43,10 +45,11 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
         return view('posts.change-password');
     })->name('change-password');
 
-    // Web Routes for User
-    Route::get('/userlist', function () {
-        return view('users.index');
-    })->name('user-list');
+    // // Web Routes for User
+    // Route::get('/userlist', function () {
+    //     return view('users.index');
+    // })->name('user-list');
+    Route::get('/user-list', [UserController::class, 'index']);
     Route::get('/user/create', function () {
         return view('users.create');
     })->name('user-create');
@@ -64,4 +67,7 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     Route::get('/profile/edit', function () {
         return view('profile.edit');
     })->name('profile-edit');
+
+    Route::resource('post', 'PostController');
+    Route::resource('user', 'UserController');
 });

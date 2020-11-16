@@ -56,74 +56,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
                     <tr>
-                        <td><a href="" data-toggle="modal" data-target="#UserDetailModel">Lael Greer</a></td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td class="d-flex justify-content-center p-3">
-                            <a class="btn btn-warning mr-3" href="{{route('user-edit')}}">Edit</a>
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#UserDeleteModel">Delete</a>
-                        </td>
+                        <td><a href="" data-toggle="modal" data-target="#UserDetailModel">{{$user->id}}</a></td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->create_user_id}}</td>
+                        <td>{{$user->type}}</td>
+                        <td>{{$user->phone}}</td>
+                        <td>{{$user->dob}}</td>
+                        <td>{{$user->address}}</td>
+                        <td>{{$user->created_at}}</td>
+                        <td>{{$user->updated_at}}</td>
+                        <td> <a href="" class="btn btn-danger">Delete</a> </td>
                     </tr>
-                    <tr>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>2009/02/27</td>
-                    </tr>
-                    <tr>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>2009/02/27</td>
-                    </tr>
-                    <tr>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>2009/02/27</td>
-                    </tr>
-                    <tr>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>Lael Greer</td>
-                        <td>Systems Administrator</td>
-                        <td>London</td>
-                        <td>21</td>
-                        <td>2009/02/27</td>
-                        <td>2009/02/27</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
