@@ -1,6 +1,10 @@
 @extends('layouts.default')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/listdatatable.css') }}">
+<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/lib/monent.min.js') }}"></script>
+<script src="{{ asset('js/multisearch.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -12,34 +16,34 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" class="form-control form-control-sm mr-2">
+                        <input type="text" class="form-control form-control-sm mr-2" id="search-name">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="email" class="form-control form-control-sm mr-2">
+                        <input type="text" class="form-control form-control-sm mr-2" id="search-email">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">From</label>
-                        <input type="date" class="form-control form-control-sm mr-2">
+                        <input type="date" class="form-control form-control-sm mr-2" id="min">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="">To</label>
-                        <input type="date" class="form-control form-control-sm mr-2">
+                        <input type="date" class="form-control form-control-sm mr-2" id="max">
                     </div>
                 </div>
                 <div class="col-md-4 mt-4">
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="button" class="btn btn-primary" id="btnSearch">Search</button>
                 </div>
             </div>
         </div>
         <div class="row">
-            <table id="post-list-table" class="table table-striped table-bordered">
+            <table id="table-list" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>

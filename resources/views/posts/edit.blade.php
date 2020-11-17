@@ -12,11 +12,11 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label>Title  <span>*</span></label>
+                <label>Title <span>*</span></label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label> Descripption  <span>*</span></label>
+                <label> Descripption <span>*</span></label>
                 <textarea class="form-control" rows="3"></textarea>
             </div>
             <label class="mr-5"> Status </label>
