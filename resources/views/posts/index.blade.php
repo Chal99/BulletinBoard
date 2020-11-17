@@ -1,5 +1,10 @@
 @extends('layouts.default')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/listdatatable.css') }}">
+<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/table.js') }}"></script>
+
 <div class="card m-5">
     <div class="card-header">
         Post Lists
@@ -12,11 +17,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text ">Keyword :</span>
                         </div>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="user-search">
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-outline-primary"> Search </button>
+                    <button class="btn btn-outline-primary" id="btnSearch"> Search </button>
                 </div>
                 <div class="col-md-2">
                     <a class="btn btn-outline-primary" href=""> Create </a>
@@ -29,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <table id="post-list-table" class="table table-striped table-bordered" style="width:100%">
+        <table id="table-list" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Post Title</th>
