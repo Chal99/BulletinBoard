@@ -12,12 +12,15 @@ interface PostServiceInterface
    */
   public function getPostList();
   /**
-   * store Post List
+   * Store Post
+   * @param Illuminate\Http\Request $request
+   * @return array postList
    */
   public function storePost($request);
-
   /**
-   * update Post List
+   * Update Post
+   * @param Illuminate\Http\Request $request
+   * @return array postList
    */
   public function updatePost($request, Post $post);
 }

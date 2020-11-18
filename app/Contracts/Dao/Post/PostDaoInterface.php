@@ -13,11 +13,14 @@ interface PostDaoInterface
     public function getPostList();
     /**
      * Store Post
+     * @param Illuminate\Http\Request $request
      * @return array postList
      */
     public function storePost($request);
     /**
      * Update Post
+     * @param Illuminate\Http\Request $request
+     *  @param App\Models\Post $post
      * @return array postList
      */
     public function updatePost($request, Post $post);

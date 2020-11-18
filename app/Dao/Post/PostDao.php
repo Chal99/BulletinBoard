@@ -16,7 +16,11 @@ class PostDao implements PostDaoInterface
     {
         return Post::get();
     }
-
+    /**
+     * Store Post
+     * @param Illuminate\Http\Request $request
+     * @return array postList
+     */
     public function storePost($request)
     {
         $post = new Post;
@@ -26,7 +30,12 @@ class PostDao implements PostDaoInterface
         $post->updated_user_id = Auth::user()->id;
         return $post->save();
     }
-
+    /**
+     * Update Post
+     * @param Illuminate\Http\Request $request
+     * @param App\Model\Post $post
+     * @return array postList
+     */
     public function updatePost($request, Post $post)
     {
         $post->update($request->all());

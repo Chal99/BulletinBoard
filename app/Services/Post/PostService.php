@@ -19,7 +19,6 @@ class PostService implements PostServiceInterface
   {
     $this->postDao = $postDao;
   }
-
   /**
    * Get post List
    * @return array $postList
@@ -28,13 +27,23 @@ class PostService implements PostServiceInterface
   {
     return $this->postDao->getPostList();
   }
+  /**
+   * Store Post
+   * @param Illuminate\Http\Request $request
+   * @return array postList
+   */
   public function storePost($request)
   {
     return $this->postDao->storePost($request);
   }
-  public function updatePost($request,Post $post)
+  /**
+   * Update Post
+   * @param Illuminate\Http\Request $request
+   * @param App\Model\Post $post
+   * @return array postList
+   */
+  public function updatePost($request, Post $post)
   {
-    return $this->postDao->updatePost($request,$post);
+    return $this->postDao->updatePost($request, $post);
   }
-
 }

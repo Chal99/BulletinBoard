@@ -23,7 +23,7 @@
                 <textarea class="form-control" name="description" rows="3">{{$post->description}}</textarea>
             </div>
             <div class="custom-control custom-switch">
-                <input type="hidden" class="custom-control-input" id="customSwitch1" name="status" value="0" />
+                <input type="hidden" name="status" value="0" />
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" value="1" />
                 <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
             </div>
