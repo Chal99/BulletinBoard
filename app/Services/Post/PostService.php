@@ -4,6 +4,7 @@ namespace App\Services\Post;
 
 use App\Contracts\Dao\Post\PostDaoInterface;
 use App\Contracts\Services\Post\PostServiceInterface;
+use App\Models\Post;
 
 class PostService implements PostServiceInterface
 {
@@ -27,4 +28,13 @@ class PostService implements PostServiceInterface
   {
     return $this->postDao->getPostList();
   }
+  public function storePost($request)
+  {
+    return $this->postDao->storePost($request);
+  }
+  public function updatePost($request,Post $post)
+  {
+    return $this->postDao->updatePost($request,$post);
+  }
+
 }

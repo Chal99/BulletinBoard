@@ -16,7 +16,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return redirect('/post-list');
+    return redirect('/post');
 });
 
 Auth::routes();
@@ -28,16 +28,18 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     // Route::get('/postlist', function () {
     //     return view('posts.index');
     // })->name('post-list');
-    Route::get('/post-list', [PostController::class, 'index']);
-    Route::get('/post/create', function () {
-        return view('posts.create');
-    })->name('post-create');
+    // Route::get('/post-list', [PostController::class, 'index']);
+    // Route::get('/post/create', [PostController::class, 'create']);
+    // Route::get('/post/create', function () {
+    //     return view('posts.create');
+    // })->name('post-create');
     Route::get('/post/edit', function () {
         return view('posts.edit');
     })->name('post-edit');
-    Route::get('/post/confirm-post', function () {
-        return view('posts.confirm-post');
-    })->name('confirm-post');
+    // Route::get('/post/confirm-post', [PostController::class, 'update']);
+    // Route::get('/post/confirm-post', function () {
+    //     return view('posts.confirm-post');
+    // })->name('confirm-post');
     Route::get('/post/upload-post', function () {
         return view('posts.upload-post');
     })->name('upload-post');
@@ -68,6 +70,7 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
         return view('profile.edit');
     })->name('profile-edit');
 
-    Route::resource('post', 'PostController');
-    Route::resource('user', 'UserController');
+    Route::post('/post/confirmation', 'PostController@confirmation');
+    Route::resource('/post', 'PostController');
+    Route::resource('/user', 'UserController');
 });

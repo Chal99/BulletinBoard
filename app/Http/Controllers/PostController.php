@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Contracts\Services\Post\PostServiceInterface;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -41,7 +41,23 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
+    }
+    /**
+     * Get data for confirmation page 
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmation(Request $request)
+    {
+        //validate the form
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        return view('posts.confirm-post', ["title" => $request->title, "description" => $request->description]);
     }
 
     /**
@@ -50,9 +66,17 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $this->postInterface->storePost($request);
+
+        return redirect()->route('post.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
@@ -74,7 +98,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -86,7 +110,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'status' => 'required'
+        ]);
+        $this->postInterface->updatePost($request, $post);
+
+        return redirect()->route('post.index')
+            ->with('success', 'Post Confirm Successfully');
     }
 
     /**

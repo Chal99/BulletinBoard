@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="{{ asset('css/listdatatable.css') }}">
 <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/table.js') }}"></script>
+<script src="{{ asset('js/postsearch.js') }}"></script>
+<script src="{{ asset('js/alertdelay.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -24,7 +25,7 @@
                     <button class="btn btn-outline-primary" id="btnSearch"> Search </button>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-outline-primary" href=""> Create </a>
+                    <a class="btn btn-outline-primary" href="{{route('post.create')}}"> Create </a>
                 </div>
                 <div class="col-md-2">
                     <a class="btn btn-outline-primary" href=""> Upload </a>
@@ -34,6 +35,11 @@
                 </div>
             </div>
         </div>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
         <table id="table-list" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -52,7 +58,7 @@
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
                     <td class="d-flex justify-content-center p-3">
-                        <a class="btn btn-warning mr-3" href="{{route('post-edit')}}">Edit</a>
+                        <a class="btn btn-warning mr-3" href="{{route('post.edit',$post->id)}}">Edit</a>
                         <a class="btn btn-danger" data-toggle="modal" data-target="#PostDeleteModel">Delete</a>
                     </td>
                 </tr>
