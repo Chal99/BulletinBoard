@@ -23,7 +23,8 @@
                 <textarea class="form-control" name="description" rows="3">{{$post->description}}</textarea>
             </div>
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" value="0" <?php echo ($post->status == 1 ? 'checked' : ''); ?>>
+                <input type="hidden" class="custom-control-input" id="customSwitch1" name="status" value="0" />
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" value="1" />
                 <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
             </div>
             <div class="form-group d-flex justify-content-end">
