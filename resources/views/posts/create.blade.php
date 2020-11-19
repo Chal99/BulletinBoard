@@ -22,11 +22,11 @@
             @csrf
             <div class="form-group">
                 <label>Title <span>*</span></label>
-                <input type="text" name="title" class="form-control" placeholder="">
+                <input type="text" name="title" class="form-control" >
             </div>
             <div class="form-group">
                 <label>Description <span>*</span></label>
-                <textarea class="form-control" name="description" rows="3"></textarea>
+                <textarea class="form-control" name="description" rows="3" ></textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary mr-5">Create</a>
