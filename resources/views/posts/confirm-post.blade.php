@@ -6,7 +6,6 @@
     <div class="card-header">
         Confirm Post
     </div>
-
     @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -17,7 +16,6 @@
         </ul>
     </div>
     @endif
-
     <div class="card-body">
         <form action="{{ route('post.store') }}" method="POST">
             @csrf

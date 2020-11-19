@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -40,7 +41,48 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
+    }
+
+    /**
+     * Get data for confirmation page 
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmation(Request $request)
+    {
+        //validate the form
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'confirmpassword' => 'required_with:password|same:password',
+            'type' => 'required',
+            'phone' => 'required',
+            'dob' => 'required',
+            'address' => 'required',
+            'profile' => 'required'
+        ]);
+        if ($request->profile) {
+
+            $fileName = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
+            $filePath = $request->file('profile')->storeAs('uploads', $fileName, 'public');
+            return view(
+                'users.confirm-user',
+                [
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "password" => $request->password,
+                    "confirmpassword" => $request->confirmpassword,
+                    "type" => $request->type,
+                    "phone" => $request->phone,
+                    "dob" => $request->dob,
+                    "address" => $request->address,
+                    "image" => '/storage/' . $filePath
+                ]
+            );
+        }
     }
 
     /**
@@ -49,9 +91,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        //validate the form
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'confirmpassword' => 'required_with:password|same:password',
+            'type' => 'required',
+            'phone' => 'required',
+            'dob' => 'required',
+            'address' => 'required',
+        ]);
+        $this->userInterface->storeUser($request);
+        return redirect()->route('user.index')->with('success', 'User Created Successfully.');
     }
 
     /**
@@ -71,9 +125,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -83,9 +137,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        //validate the form
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'type' => 'required',
+            'phone' => 'required',
+            'dob' => 'required',
+            'address' => 'required',
+        ]);
+        $this->userInterface->updateUser($request, $user);      
+        return redirect()->route('user.index')->with('success', 'User Updated Successfully.');
     }
 
     /**

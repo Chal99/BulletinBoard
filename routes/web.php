@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/user', 'UserController');
+Route::post('/user/confirmation', 'UserController@confirmation');
 
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
@@ -51,16 +53,16 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     // Route::get('/userlist', function () {
     //     return view('users.index');
     // })->name('user-list');
-    Route::get('/user-list', [UserController::class, 'index']);
-    Route::get('/user/create', function () {
-        return view('users.create');
-    })->name('user-create');
-    Route::get('/user/edit', function () {
-        return view('users.edit');
-    })->name('user-edit');
-    Route::get('/user/confirmuser', function () {
-        return view('users.confirm-user');
-    })->name('confirm-user');
+    // Route::get('/user-list', [UserController::class, 'index']);
+    // Route::get('/user/create', function () {
+    //     return view('users.create');
+    // })->name('user-create');
+    // Route::get('/user/edit', function () {
+    //     return view('users.edit');
+    // })->name('user-edit');
+    // Route::get('/user/confirmuser', function () {
+    //     return view('users.confirm-user');
+    // })->name('confirm-user');
 
     // Web Routes for Profile
     Route::get('/profile', function () {
@@ -72,5 +74,5 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
     Route::post('/post/confirmation', 'PostController@confirmation');
     Route::resource('/post', 'PostController');
-    Route::resource('/user', 'UserController');
+   
 });

@@ -5,6 +5,7 @@
 <script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/lib/monent.min.js') }}"></script>
 <script src="{{ asset('js/usersearch.js') }}"></script>
+<script src="{{ asset('js/alertdelay.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -42,6 +43,11 @@
                 </div>
             </div>
         </div>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
         <div class="row">
             <table id="table-list" class="table table-striped table-bordered">
                 <thead>
@@ -72,7 +78,10 @@
                         <td>{{$user->address}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>
-                        <td> <a href="" class="btn btn-danger">Delete</a> </td>
+                        <td class="d-flex justify-content-center p-3">
+                            <a class="btn btn-warning mr-3" href="{{route('user.edit',$user->id)}}">Edit</a>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#UserDeleteModel">Delete</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
