@@ -4,7 +4,7 @@
 <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/lib/monent.min.js') }}"></script>
-<script src="{{ asset('js/multisearch.js') }}"></script>
+<script src="{{ asset('js/usersearch.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
