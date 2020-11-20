@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Services\User;
 
+use App\Models\User;
+
 interface UserServiceInterface
 {
     /**
@@ -9,4 +11,16 @@ interface UserServiceInterface
      * @return array userList
      */
     public function getUserList();
+    /**
+     * Store User
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function storeUser($request);
+    /**
+     * Update User
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function updateUser($request, User $user);
 }
