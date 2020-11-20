@@ -25,6 +25,7 @@ Route::get('/user/change-password', 'UserController@change_password')->name('use
 Route::resource('/user', 'UserController');
 Route::post('/user/confirmation', 'UserController@confirmation');
 Route::post('/user/update-password', 'UserController@update_password');
+
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
     // Web Routes for Post

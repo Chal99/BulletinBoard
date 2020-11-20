@@ -17,7 +17,12 @@ $(document).ready(function () {
             modal.find('#user_id').val(id);
             modal.find('#name').val(name);
             modal.find('#email').val(email);
-            modal.find('#type').val(type);
+            if(type==0){
+                modal.find('#type').val('Admin');
+            }
+            else{
+                modal.find('#type').val('User');
+            }
             modal.find('#phone').val(phone);
             modal.find('#dob').val(dob);
             modal.find('#address').val(address);
