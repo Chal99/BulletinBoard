@@ -62,12 +62,12 @@ class UserController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'address' => 'required',
-            'profile' => 'required'
+            'profile' => 'required|size:20000'
         ]);
         if ($request->profile) {
 
-            $fileName = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
-            $filePath = $request->file('profile')->storeAs('uploads', $fileName, 'public');
+            $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
+            $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
             return view(
                 'users.confirm-user',
                 [
@@ -79,7 +79,7 @@ class UserController extends Controller
                     "phone" => $request->phone,
                     "dob" => $request->dob,
                     "address" => $request->address,
-                    "image" => '/storage/' . $filePath
+                    "image" => '/storage/' . $file_path
                 ]
             );
         }
@@ -158,8 +158,28 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')
+            ->with('success', 'User deleted successfully');
+    }
+
+    public function cancel(Request $request){
+
+        return view(
+                'users.create',
+                [
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "password" => $request->password,
+                    "confirmpassword" => $request->confirmpassword,
+                    "type" => $request->type,
+                    "phone" => $request->phone,
+                    "dob" => $request->dob,
+                    "address" => $request->address,
+                    "image" => $request->profile
+                ]
+            );
     }
 }

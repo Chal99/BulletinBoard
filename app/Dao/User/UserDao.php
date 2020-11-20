@@ -17,9 +17,9 @@ class UserDao implements UserDaoInterface
         return User::get();
     }
     /**
-     * Store Post
+     * Store User
      * @param Illuminate\Http\Request $request
-     * @return array postList
+     * @return array userList
      */
     public function storeUser($request)
     {
@@ -37,10 +37,10 @@ class UserDao implements UserDaoInterface
         return $user->save();
     }
     /**
-     * Update Post
+     * Update User
      * @param Illuminate\Http\Request $request
-     * @param App\Model\Post $post
-     * @return array postList
+     * @param App\Model\User $user
+     * @return array userList
      */
     public function updateUser($request, User $user)
     {
@@ -49,9 +49,9 @@ class UserDao implements UserDaoInterface
             //code for remove old file
             $file_old = $path . $user->profile;
             unlink($file_old);
-            $fileName = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
-            $filePath = $request->file('profile')->storeAs('uploads', $fileName, 'public');
-            $user->profile = '/storage/' . $filePath;
+            $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
+            $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
+            $user->profile = '/storage/' . $file_path;
             $user->update();
         }
         $user->update();

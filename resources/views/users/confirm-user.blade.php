@@ -24,7 +24,7 @@
                 <label>Profile</label>
                 <div class="col-sm-12 mr-auto">
                     <div class="col-sm-12 mr-auto">
-                        <input type="hidden" name="profile" value="{{$image}}" >
+                        <input type="hidden" name="profile" value="{{$image}}">
                         <img src="{{asset($image)}}" alt="profile" class="img-thumbnail rounded mx-auto d-block">
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary mr-5">Confirm</button>
-                <a class="btn btn-secondary" href="{{route('user.create')}}">Cancel</a>
+                <a type="button" href="{{ route('user.create') }}">Cancel</button>
             </div>
         </form>
     </div>

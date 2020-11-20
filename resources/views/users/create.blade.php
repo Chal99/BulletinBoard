@@ -1,6 +1,5 @@
 @extends('layouts.default')
 @section('content')
-<script src="{{ asset('js/alertdelay.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -21,7 +20,7 @@
             @csrf
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control"  value="{{ old('name') }}">
+                <input type="text" name="name" class="form-control"  value="{{ old('name') }}" >
             </div>
             <div class="form-group">
                 <label>Email Address</label>
@@ -37,10 +36,10 @@
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
-                <select class="form-control" name="type" value="{{ old('type') }}">
+                <select class="form-control" name="type">
                     <option disable>Please Select Type</option>
-                    <option value="0" id="type">User</option>
-                    <option value="1" id="type">Admin</option>
+                    <option value="0" id="type" <?php echo (old('type')== 0 ? 'selected' : '') ?>>User</option>
+                    <option value="1" id="type" <?php echo (old('type')== 1 ? 'selected' : '') ?>>Admin</option>
                 </select>
             </div>
             <div class="form-group">
