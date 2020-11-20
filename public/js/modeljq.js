@@ -43,7 +43,12 @@ $(document).ready(function () {
             modal.find('#post_id').val(id);
             modal.find('#title').val(title);
             modal.find('#description').val(description);
-            modal.find('#status').val(status);
+            if(status==1){
+                modal.find('#status').val('Active');
+            }
+            else{
+                modal.find('#status').val('No-Active');
+            }
         });
     });
 
