@@ -21,9 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user/change-password', 'UserController@change_password')->name('user.change_password');
 Route::resource('/user', 'UserController');
 Route::post('/user/confirmation', 'UserController@confirmation');
-
+Route::post('/user/update-password', 'UserController@update_password');
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
     // Web Routes for Post
@@ -45,9 +46,9 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     Route::get('/post/upload-post', function () {
         return view('posts.upload-post');
     })->name('upload-post');
-    Route::get('/change-password', function () {
-        return view('posts.change-password');
-    })->name('change-password');
+    // Route::post('/change-password', function () {
+    //     return view('users.change-password');
+    // })->name('change-password');
 
     // // Web Routes for User
     // Route::get('/userlist', function () {

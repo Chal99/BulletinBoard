@@ -46,4 +46,22 @@ class UserService implements UserServiceInterface
     {
         return $this->userDao->updateUser($request, $user);
     }
+    /**
+     * Update User Password
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function updatePassword($request)
+    {
+        return $this->userDao->updatePassword($request);
+    }
+    /**
+     * Delete User
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function destroyUser($request)
+    {
+        return $this->userDao->destroyUser($request);
+    }
 }

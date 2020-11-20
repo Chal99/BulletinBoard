@@ -24,4 +24,10 @@ interface PostDaoInterface
      * @return array postList
      */
     public function updatePost($request, Post $post);
+    /**
+     * Delete Post
+     * @param Illuminate\Http\Request $request
+     * @return array postList
+     */
+    public function destroyPost($request);
 }

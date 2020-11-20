@@ -124,11 +124,15 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request,Post $post)
     {
-        //
+        $post_id=$request->post_id;
+        Post::find($post_id)->delete();
+        return redirect()->route('post.index')
+            ->with('success', 'Post deleted successfully');
     }
 }

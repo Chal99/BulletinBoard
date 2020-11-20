@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Rules\MatchOldPassword;
 
 class UserController extends Controller
 {
@@ -62,7 +64,7 @@ class UserController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'address' => 'required',
-            'profile' => 'required|size:20000'
+            'profile' => 'required'
         ]);
         if ($request->profile) {
 
@@ -91,7 +93,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
         //validate the form
         $request->validate([
@@ -122,7 +124,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param   \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -134,7 +136,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param   \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -148,38 +150,50 @@ class UserController extends Controller
             'dob' => 'required',
             'address' => 'required',
         ]);
-        $this->userInterface->updateUser($request, $user);      
+        $this->userInterface->updateUser($request, $user);
         return redirect()->route('user.index')->with('success', 'User Updated Successfully.');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function change_password()
+    {
+        return view('profile.change-password');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param   \App\Models\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update_password(Request $request, User $user)
+    {
+        //validate the form
+        $request->validate([
+            'password' => ['required', new MatchOldPassword],
+            'new_psw' => 'required',
+            'new_confirm_psw' => 'required_with:new_psw|same:new_psw',
+        ]);
+        $this->userInterface->updatePassword($request);
+        return redirect()->route('user.index')->with('success', 'User Password Updated Successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param   \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        $user->delete();
-        return redirect()->route('users.index')
+        $this->userInterface->destroyUser($request);
+        return redirect()->route('user.index')
             ->with('success', 'User deleted successfully');
-    }
-
-    public function cancel(Request $request){
-
-        return view(
-                'users.create',
-                [
-                    "name" => $request->name,
-                    "email" => $request->email,
-                    "password" => $request->password,
-                    "confirmpassword" => $request->confirmpassword,
-                    "type" => $request->type,
-                    "phone" => $request->phone,
-                    "dob" => $request->dob,
-                    "address" => $request->address,
-                    "image" => $request->profile
-                ]
-            );
     }
 }

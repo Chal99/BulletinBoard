@@ -5,6 +5,7 @@ namespace App\Dao\User;
 use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserDao implements UserDaoInterface
 {
@@ -26,7 +27,7 @@ class UserDao implements UserDaoInterface
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->type = $request->type;
         $user->phone = $request->phone;
         $user->dob = $request->dob;
@@ -52,8 +53,25 @@ class UserDao implements UserDaoInterface
             $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
             $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
             $user->profile = '/storage/' . $file_path;
-            $user->update();
+            return $user->update();
         }
-        $user->update();
+        return $user->update();
+    }
+    /**
+     * Update User Password
+     * @param Illuminate\Http\Request $request
+     */
+    public function updatePassword($request)
+    {
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_psw)]);
+    }
+    /**
+     * Delete User
+     * @param Illuminate\Http\Request $request
+     */
+    public function destroyUser($request)
+    {
+        $user_id = $request->user_id;
+        User::find($user_id)->delete();
     }
 }

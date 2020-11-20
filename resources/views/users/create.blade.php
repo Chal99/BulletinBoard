@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+<script src="{{ asset('js/alertdelay.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
