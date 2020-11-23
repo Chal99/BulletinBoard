@@ -1,3 +1,9 @@
+
+$(document).ready(function(){
+    $(".reset_btn").click(function(){
+        $("#user_edit").trigger("reset");
+    });
+});
 $(function () {
     $('#UserDeleteModel').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal

@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create',["name"=>'',"email"=>'',"type"=>'',"phone"=>'',"dob"=>'',"address"=>'',"image"=>'',"password"=>'',"confirmpassword"=>'']);
+        return view('users.create');
     }
 
     /**
@@ -54,7 +54,6 @@ class UserController extends Controller
      */
     public function confirmation(Request $request)
     {
-        //validate the form
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -64,7 +63,6 @@ class UserController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'address' => 'required',
-            'profile' => 'required'
         ]);
         if ($request->profile) {
 

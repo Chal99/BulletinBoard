@@ -16,7 +16,6 @@
         </ul>
     </div>
     @endif
-
     <div class="card-body">
         <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -67,7 +66,7 @@
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
-                <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
+                <a type="button" href="{{ route('user.create') }}" class="btn btn-primary">Cancel</button>
             </div>
         </form>
     </div>

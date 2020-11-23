@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,15 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class, 'create_user_id');
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+    }
+
+    public function getUpdatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
     }
 }
