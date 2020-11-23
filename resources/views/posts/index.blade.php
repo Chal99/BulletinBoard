@@ -5,6 +5,7 @@
 <script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/postsearch.js') }}"></script>
 <script src="{{ asset('js/alertdelay.js') }}"></script>
+<script src="{{ asset('js/modeljq.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -53,15 +54,64 @@
             <tbody>
                 @foreach($posts as $post)
                 <tr>
-                    <td><a href="" data-toggle="modal" data-target="#PostDetailModel">{{$post->title}}</a></td>
+                <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}" data-createuserid="{{$post->create_user_id}}" data-updateduserid="{{$post->updated_user_id}}" data-createddate="{{$post->created_at}}" data-updateddate="{{$post->updated_at}}">{{$user->id}}</a></td>
                     <td>{{$post->description}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
                     <td class="d-flex justify-content-center p-3">
-                        <a class="btn btn-warning mr-3" href="{{route('post.edit',$post->id)}}">Edit</a>
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#PostDeleteModel">Delete</a>
+                        <a class="btn btn-warning mr-3" href="{{ route('post.edit', $post->id) }}">Edit</a>
+                        <button class="btn btn-danger" href="#" data-target="#PostDeleteModel" data-toggle="modal" data-id="{{$post->id}}" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}">Delete</button>
                     </td>
                 </tr>
+                <div class="modal fade" id="PostDeleteModel">
+                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title font-weight-bold"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{route('post.destroy', $post->id) }}" method="POST">
+                                <div class="modal-body">
+                                    <input type="hidden" name="post_id" id="post_id">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label font-weight-bold">ID</label>
+                                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                        <div class="col-sm-8 col-form-label">
+                                            <input type="text" id="id" class="form-control form-control-sm border-0" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label font-weight-bold">Title</label>
+                                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                        <div class="col-sm-8 col-form-label">
+                                            <input type="text" id="title" class="form-control form-control-sm border-0" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label font-weight-bold">Description</label>
+                                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                        <div class="col-sm-8 col-form-label">
+                                            <input type="text" id="description" class="form-control form-control-sm border-0" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label font-weight-bold">Status</label>
+                                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                        <div class="col-sm-8 col-form-label">
+                                            <input type="text" id="status" class="form-control form-control-sm border-0" readonly />
+                                        </div>
+                                    </div>
+                                    {{ method_field('delete') }}
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger mr-3">Delete</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
             </tbody>
         </table>
@@ -128,55 +178,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="PostDeleteModel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title font-weight-bold">Post Delete</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row ml-1">
-                    <label>Are You Sure Want To Delete Post ?</label>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label font-weight-bold">ID</label>
-                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8 col-form-label">
-                        <label>001</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label font-weight-bold">Title</label>
-                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label font-weight-bold">Description</label>
-                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label font-weight-bold">Status</label>
-                    <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                    <div class="col-sm-8 col-form-label">
-                        <label>Active</label>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-danger mr-3">Delete</a>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

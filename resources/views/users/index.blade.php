@@ -6,6 +6,7 @@
 <script src="{{ asset('js/lib/monent.min.js') }}"></script>
 <script src="{{ asset('js/usersearch.js') }}"></script>
 <script src="{{ asset('js/alertdelay.js') }}"></script>
+<script src="{{ asset('js/modeljq.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -68,7 +69,7 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="" data-toggle="modal" data-target="#UserDetailModel">{{$user->id}}</a></td>
+                        <td><a href="#UserDetailModel" data-toggle="modal" class="open-UserDetailModel" data-photo="{{$user->profile}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-createuserid="{{$user->create_user_id}}" data-updateduserid="{{$user->updated_user_id}}" data-createddate="{{$user->created_at}}" data-updateddate="{{$user->updated_at}}">{{$user->id}}</a></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->create_user_id}}</td>
@@ -80,9 +81,79 @@
                         <td>{{$user->updated_at}}</td>
                         <td class="d-flex justify-content-center p-3">
                             <a class="btn btn-warning mr-3" href="{{route('user.edit', $user->id)}}">Edit</a>
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#UserDeleteModel">Delete</a>
+                            <button class="btn btn-danger" href="#" data-target="#UserDeleteModel" data-toggle="modal" data-id="{{$user->id}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-address="{{$user->address}}">Delete</button>
                         </td>
                     </tr>
+                    <div class="modal fade" id="UserDeleteModel">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title font-weight-bold">User Delete</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{route('user.destroy', $user->id) }}" method="POST">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="user_id" id="user_id">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">ID</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="id" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="name" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="type" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="email" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="phone" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="dob" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
+                                            <label class="col-sm-1 col-form-label font-weight-bold">:</label>
+                                            <div class="col-sm-8 col-form-label">
+                                                <input type="text" id="address" class="form-control form-control-sm border-0" readonly />
+                                            </div>
+                                        </div>
+                                        {{ method_field('delete') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger mr-3">Delete</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </tbody>
             </table>
@@ -101,77 +172,77 @@
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-sm-12 m-auto">
-                        <img src="data:image/png;base64,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" alt="..." class="img-thumbnail rounded mx-auto d-block">
+                    <img src="" id="user-photo" alt="profile" class="img-thumbnail rounded mx-auto d-block">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="name" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="type" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label for="">Example</label>
+                        <input type="text" id="email" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label for="">Example</label>
+                        <input type="text" id="phone" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label for="">Example</label>
+                        <input type="text" id="dob" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="address" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="created-date" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="create-user" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="updated-date" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="updated-user" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
             </div>
@@ -181,79 +252,4 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="UserDeleteModel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title font-weight-bold">User Delete</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('user.delete')}" method="POST">
-                    @csrf
-                    @method('DELETE')   
-                    <div class="form-group row ml-1">
-                        <label>Are You Sure Want To Delete User ?</label>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">ID</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>001</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Name</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>HLA</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Type</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>Example</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Email</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>Example@gmail.com</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Phone</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>0992323323</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Date Of Birth</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>27.2.1999</label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold">Address</label>
-                        <label class="col-sm-1 col-form-label font-weight-bold">:</label>
-                        <div class="col-sm-8 col-form-label">
-                            <label>Example</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger mr-3">Delete</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection

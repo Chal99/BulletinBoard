@@ -24,4 +24,16 @@ interface UserDaoInterface
      * @return array userList
      */
     public function updateUser($request, User $user);
+    /**
+     * Update User Password
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function updatePassword($request);
+    /**
+     * Delete User
+     * @param Illuminate\Http\Request $request
+     * @return array userList
+     */
+    public function destroyUser($request);
 }

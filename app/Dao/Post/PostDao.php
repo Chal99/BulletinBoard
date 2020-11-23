@@ -40,4 +40,12 @@ class PostDao implements PostDaoInterface
     {
         $post->update($request->all());
     }
+    /**
+     * Delete Post
+     * @param Illuminate\Http\Request $request
+     */
+    public function destroyPost($request)
+    {
+        Post::find($request->post_id)->delete();
+    }
 }

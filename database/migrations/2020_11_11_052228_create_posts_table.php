@@ -24,8 +24,8 @@ class CreatePostsTable extends Migration
             $table->date('deleted_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('create_user_id')->references('id')->on('users');
-            $table->foreign('updated_user_id')->references('id')->on('users');
+            $table->foreign('create_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('updated_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
