@@ -21,7 +21,7 @@
             @csrf
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control"  value="{{ old('name') }}" >
+                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
             </div>
             <div class="form-group">
                 <label>Email Address</label>
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
-                <select class="form-control" name="type">
+                <select class="form-control" name="type" value="{{ old('type') }}">
                     <option disable>Please Select Type</option>
                     <option value="0" id="type" <?php echo (old('type')== 0 ? 'selected' : '') ?>>User</option>
                     <option value="1" id="type" <?php echo (old('type')== 1 ? 'selected' : '') ?>>Admin</option>
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
+                <input type="text" name="phone" class="form-control"value="{{ old('phone') }}">
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label>Address</label>
-                <textarea class="form-control" name="address" value="{{ old('address') }}"></textarea>
+                <textarea class="form-control" name="address">{{ old('address') }}</textarea>
             </div>
             <div class="form-group">
                 <label>Profile</label>

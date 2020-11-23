@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <script src="{{ asset('js/alertdelay.js') }}"></script>
+<script src="{{ asset('js/modeljq.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -17,7 +18,7 @@
     </div>
     @endif
     <div class="card-body">
-        <form action="{{ route('user.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.update',$user->id) }}" id="user_edit" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -58,7 +59,7 @@
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary mr-5">Edit</button>
-                <button type="reset" class="btn btn-secondary">Clear</button>
+                <button type="button" class="btn btn-secondary reset_btn">Clear</button>
             </div>
         </form>
     </div>

@@ -54,7 +54,6 @@ class UserController extends Controller
      */
     public function confirmation(Request $request)
     {
-        //validate the form
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -64,7 +63,6 @@ class UserController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'address' => 'required',
-            'profile' => 'required'
         ]);
         if ($request->profile) {
 
@@ -95,43 +93,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //validate the form
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'confirmpassword' => 'required_with:password|same:password',
-            'type' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-        ]);
-        $this->userInterface->storeUser($request);
-        return redirect()->route('user.index')->with('success', 'User Created Successfully.');
-    }
+        switch ($request->input('action')) {
+            case 'save':
+                //validate the form
+                $request->validate([
+                    'name' => 'required',
+                    'email' => 'required',
+                    'password' => 'required',
+                    'confirmpassword' => 'required_with:password|same:password',
+                    'type' => 'required',
+                    'phone' => 'required',
+                    'dob' => 'required',
+                    'address' => 'required',
+                ]);
+                $this->userInterface->storeUser($request);
+                return redirect()->route('user.index')->with('success', 'User Created Successfully.');
+                break;
 
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create_back(Request $request)
-    {
-        //validate the form
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'confirmpassword' => 'required_with:password|same:password',
-            'type' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-        ]);
-        $this->userInterface->storeUser($request);
-        return redirect()->route('user.index')->with('success', 'User Created Successfully.');
+            case 'cancel':
+                return view('users.create', [
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "password" => $request->password,
+                    "confirmpassword" => $request->confirmpassword,
+                    "type" => $request->type,
+                    "phone" => $request->phone,
+                    "dob" => $request->dob,
+                    "address" => $request->address,
+                    "image" => $request->profile,
+                ]);
+                break;
+        }
     }
 
     /**
@@ -143,6 +135,39 @@ class UserController extends Controller
     public function show($id)
     {
         //
+    }
+    /**
+     * Display the specified resource with data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $profile = Auth::user()->profile;
+        $name = Auth::user()->name;
+        $t = Auth::user()->type;
+        if ($t == 0) {
+            $type = 'Admin';
+        } else {
+            $type = 'User';
+        }
+        $email = Auth::user()->email;
+        $phone = Auth::user()->phone;
+        $dob = Auth::user()->dob;
+        $email = Auth::user()->email;
+        $address = Auth::user()->address;
+        return view(
+            'profile.index',
+            [
+                "name" => $name,
+                "email" => $email,
+                "type" => $type,
+                "phone" => $phone,
+                "dob" => $dob,
+                "address" => $address,
+                "profile" => $profile
+            ]
+        );
     }
 
     /**
@@ -179,7 +204,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for change password the specified resource.
      *
      * @return \Illuminate\Http\Response
      */
