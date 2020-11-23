@@ -54,7 +54,7 @@
             <tbody>
                 @foreach($posts as $post)
                 <tr>
-                    <td><a href="" data-toggle="modal" data-target="#PostDetailModel">{{$post->title}}</a></td>
+                <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}" data-createuserid="{{$post->create_user_id}}" data-updateduserid="{{$post->updated_user_id}}" data-createddate="{{$post->created_at}}" data-updateddate="{{$post->updated_at}}">{{$user->id}}</a></td>
                     <td>{{$post->description}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
