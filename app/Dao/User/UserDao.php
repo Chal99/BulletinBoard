@@ -71,7 +71,6 @@ class UserDao implements UserDaoInterface
      */
     public function destroyUser($request)
     {
-        $user_id = $request->user_id;
-        User::find($user_id)->delete();
+        User::find($request->user_id)->delete();
     }
 }

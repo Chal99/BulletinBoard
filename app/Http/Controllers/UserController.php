@@ -110,6 +110,30 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'User Created Successfully.');
     }
 
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create_back(Request $request)
+    {
+        //validate the form
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'confirmpassword' => 'required_with:password|same:password',
+            'type' => 'required',
+            'phone' => 'required',
+            'dob' => 'required',
+            'address' => 'required',
+        ]);
+        $this->userInterface->storeUser($request);
+        return redirect()->route('user.index')->with('success', 'User Created Successfully.');
+    }
+
     /**
      * Display the specified resource.
      *

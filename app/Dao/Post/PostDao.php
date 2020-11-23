@@ -46,7 +46,6 @@ class PostDao implements PostDaoInterface
      */
     public function destroyPost($request)
     {
-        $post_id = $request->post_id;
-        Post::find($post_id)->delete();
+        Post::find($request->post_id)->delete();
     }
 }

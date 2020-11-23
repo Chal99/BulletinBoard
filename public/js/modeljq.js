@@ -17,10 +17,10 @@ $(document).ready(function () {
             modal.find('#user_id').val(id);
             modal.find('#name').val(name);
             modal.find('#email').val(email);
-            if(type==0){
+            if (type == 0) {
                 modal.find('#type').val('Admin');
             }
-            else{
+            else {
                 modal.find('#type').val('User');
             }
             modal.find('#phone').val(phone);
@@ -28,6 +28,47 @@ $(document).ready(function () {
             modal.find('#address').val(address);
         });
     });
+
+    $(document).on("click", ".open-UserDetailModel", function () {
+        var name = $(this).data('name');
+        var email = $(this).data('email');
+        var type = $(this).data('type');
+        var phone = $(this).data('phone');
+        var dob = $(this).data('dob');
+        var address = $(this).data('address');
+        var createuserid = $(this).data('createuserid');
+        var updateduserid = $(this).data('updateduserid');
+        var createddate = $(this).data('createddate');
+        var updateddate = $(this).data('updateddate');
+        var photo = $(this).data('photo');
+        $(".modal-body #name").val(name);
+        $(".modal-body #email").val(email);
+        if(type==0){
+            $(".modal-body #type").val('Admin');
+        }
+        else{
+            $(".modal-body #type").val('User');
+        }
+        $(".modal-body #phone").val(phone);
+        $(".modal-body #dob").val(dob);
+        $(".modal-body #address").val(address);
+        if(createuserid==0){
+            $(".modal-body #create-user").val('Admin');
+        }
+        else{
+            $(".modal-body #create-user").val('User');
+        }
+        if(updateduserid==0){
+            $(".modal-body #updated-user").val('Admin');
+        }
+        else{
+            $(".modal-body #updated-user").val('User');
+        }
+        $(".modal-body #created-date").val(createddate);
+        $(".modal-body #updated-date").val(updateddate);
+        $('.modal-body #user-photo"').attr("src",photo);
+    });
+
     $(function () {
         $('#PostDeleteModel').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
@@ -43,10 +84,10 @@ $(document).ready(function () {
             modal.find('#post_id').val(id);
             modal.find('#title').val(title);
             modal.find('#description').val(description);
-            if(status==1){
+            if (status == 1) {
                 modal.find('#status').val('Active');
             }
-            else{
+            else {
                 modal.find('#status').val('No-Active');
             }
         });
