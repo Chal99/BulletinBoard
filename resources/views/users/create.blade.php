@@ -21,7 +21,7 @@
             @csrf
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control"  value="{{ old('name') }}" >
+                <input type="text" name="name" class="form-control"  value="<?php echo ($name != null ? '{{$name}}' : '{{ old(name)}}') ?>" >
             </div>
             <div class="form-group">
                 <label>Email Address</label>

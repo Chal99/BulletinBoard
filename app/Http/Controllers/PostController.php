@@ -41,7 +41,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create',["title"=>'',"description"=>'']);
     }
     /**
      * Get data for confirmation page 
@@ -68,15 +68,25 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
+        switch ($request->input('action')) {
+            case 'save':
+                $request->validate([
+                    'title' => 'required',
+                    'description' => 'required',
+                ]);
 
-        $this->postInterface->storePost($request);
+                $this->postInterface->storePost($request);
+                return redirect()->route('post.index')
+                    ->with('success', 'Product created successfully.');
+                break;
 
-        return redirect()->route('post.index')
-            ->with('success', 'Product created successfully.');
+            case 'cancel':
+                return view('posts.create', [
+                    "title" => $request->title,
+                    "description" => $request->description,
+                ]);
+                break;
+        }
     }
 
     /**

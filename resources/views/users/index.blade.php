@@ -69,7 +69,7 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="#UserDetailModel" data-toggle="modal" class="open-UserDetailModel" data-photo="{{$user->profile}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-createuserid="{{$user->create_user_id}}" data-updateduserid="{{$user->updated_user_id}}" data-createddate="{{$user->created_at}}" data-updateddate="{{$user->updated_at}}">{{$user->id}}</a></td>
+                        <td><a href="#UserDetailModel" data-toggle="modal" class="open-UserDetailModel" data-photo="{{asset($user->profile)}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-createuserid="{{$user->create_user_id}}" data-updateduserid="{{$user->updated_user_id}}" data-createddate="{{$user->created_at}}" data-updateddate="{{$user->updated_at}}">{{$user->id}}</a></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->create_user_id}}</td>
@@ -172,7 +172,7 @@
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-sm-12 m-auto">
-                    <img src="" id="user-photo" alt="profile" class="img-thumbnail rounded mx-auto d-block">
+                        <img src="" alt="profile" class="img-thumbnail rounded mx-auto d-block">
                     </div>
                 </div>
                 <div class="form-group row">

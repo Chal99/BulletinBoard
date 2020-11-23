@@ -25,7 +25,7 @@
                 <div class="col-sm-12 mr-auto">
                     <div class="col-sm-12 mr-auto">
                         <input type="hidden" name="profile" value="{{$image}}">
-                        <img src="{{asset($image)}}" alt="profile" class="img-thumbnail rounded mx-auto d-block">
+                        <img src="{{asset($image)}}" name="profile" alt="profile" class="img-thumbnail rounded mx-auto d-block">
                     </div>
                 </div>
             </div>
@@ -66,8 +66,8 @@
                 <textarea class="form-control" name="address" rows="3">{{$address}}</textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary mr-5">Confirm</button>
-                <a type="button" href="{{ route('user.create-back') }}">Cancel</button>
+                <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
             </div>
         </form>
     </div>

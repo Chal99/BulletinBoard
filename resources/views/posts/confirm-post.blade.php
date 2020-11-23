@@ -28,8 +28,8 @@
                 <textarea class="form-control" name="description" rows="3">{{ $description }}</textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary mr-5">Confirm</button>
-                <a class="btn btn-secondary" href="{{route('post.create')}}">Cancel</a>
+                <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
             </div>
         </form>
     </div>

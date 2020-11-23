@@ -54,7 +54,7 @@
             <tbody>
                 @foreach($posts as $post)
                 <tr>
-                <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}" data-createuserid="{{$post->create_user_id}}" data-updateduserid="{{$post->updated_user_id}}" data-createddate="{{$post->created_at}}" data-updateddate="{{$post->updated_at}}">{{$user->id}}</a></td>
+                    <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}" data-createuserid="{{$post->create_user_id}}" data-updateduserid="{{$post->updated_user_id}}" data-createddate="{{$post->created_at}}" data-updateddate="{{$post->updated_at}}">{{$post->title}}</a></td>
                     <td>{{$post->description}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
@@ -131,49 +131,49 @@
                     <label class="col-sm-3 col-form-label font-weight-bold">Title</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="title" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Description</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="description" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Status</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="status" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="created-date" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Created User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="create-user" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated Date</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="updated-date" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label font-weight-bold">Updated User</label>
                     <label class="col-sm-1 col-form-label font-weight-bold">:</label>
                     <div class="col-sm-8 col-form-label">
-                        <label>Example</label>
+                        <input type="text" id="updated-user" class="form-control form-control-sm border-0" readonly />
                     </div>
                 </div>
             </div>
