@@ -22,7 +22,7 @@
     </div>
     @endif
     <div class="card-body">
-        <form action="{{url('/user/update-password')}}" method="POST">
+        <form action="{{ url('/user/update-password') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="exampleFormControlInput1">Current Password</label>

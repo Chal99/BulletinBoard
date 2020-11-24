@@ -143,12 +143,14 @@ class UserController extends Controller
      */
     public function profile()
     {
+        $id = Auth::user()->id;
         $profile = Auth::user()->profile;
         $name = Auth::user()->name;
         $t = Auth::user()->type;
         if ($t == 0) {
             $type = 'Admin';
-        } else {
+        } 
+        else {
             $type = 'User';
         }
         $email = Auth::user()->email;
@@ -159,6 +161,7 @@ class UserController extends Controller
         return view(
             'profile.index',
             [
+                "id" => $id,
                 "name" => $name,
                 "email" => $email,
                 "type" => $type,

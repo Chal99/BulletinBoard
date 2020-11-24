@@ -5,7 +5,7 @@
 <script src="{{ asset('js/lib/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/postsearch.js') }}"></script>
 <script src="{{ asset('js/alertdelay.js') }}"></script>
-<script src="{{ asset('js/modeljq.js') }}"></script>
+<script src="{{ asset('js/modal.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -26,7 +26,7 @@
                     <button class="btn btn-outline-primary" id="btnSearch"> Search </button>
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-outline-primary" href="{{route('post.create')}}"> Create </a>
+                    <a class="btn btn-outline-primary" href="{{ route('post.create') }}"> Create </a>
                 </div>
                 <div class="col-md-2">
                     <a class="btn btn-outline-primary" href=""> Upload </a>
@@ -54,13 +54,13 @@
             <tbody>
                 @foreach($posts as $post)
                 <tr>
-                    <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}" data-createuserid="{{$post->create_user_id}}" data-updateduserid="{{$post->updated_user_id}}" data-createddate="{{$post->created_at}}" data-updateddate="{{$post->updated_at}}">{{$post->title}}</a></td>
-                    <td>{{$post->description}}</td>
-                    <td>{{$post->user->name}}</td>
-                    <td>{{$post->created_at}}</td>
+                    <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{ $post->title }}" data-description="{{ $post->description }}" data-status="{{ $post->status }}" data-createuserid="{{ $post->create_user_id }}" data-updateduserid="{{ $post->updated_user_id }}" data-createddate="{{ $post->created_at}} " data-updateddate="{{ $post->updated_at }}">{{ $post->title }}</a></td>
+                    <td>{{ $post->description }}</td>
+                    <td>{{ $post->user->name }}</td>
+                    <td>{{ $post->created_at }}</td>
                     <td class="d-flex justify-content-center p-3">
                         <a class="btn btn-warning mr-3" href="{{ route('post.edit', $post->id) }}">Edit</a>
-                        <button class="btn btn-danger" href="#" data-target="#PostDeleteModel" data-toggle="modal" data-id="{{$post->id}}" data-title="{{$post->title}}" data-description="{{$post->description}}" data-status="{{$post->status}}">Delete</button>
+                        <button class="btn btn-danger" href="#" data-target="#PostDeleteModel" data-toggle="modal" data-id="{{ $post->id }}" data-title="{{ $post->title }}" data-description="{{ $post->description }}" data-status="{{ $post->status }}">Delete</button>
                     </td>
                 </tr>
                 <div class="modal fade" id="PostDeleteModel">
@@ -72,7 +72,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="{{route('post.destroy', $post->id) }}" method="POST">
+                            <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                                 <div class="modal-body">
                                     <input type="hidden" name="post_id" id="post_id">
                                     <div class="form-group row">

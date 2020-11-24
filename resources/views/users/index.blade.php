@@ -6,7 +6,7 @@
 <script src="{{ asset('js/lib/monent.min.js') }}"></script>
 <script src="{{ asset('js/usersearch.js') }}"></script>
 <script src="{{ asset('js/alertdelay.js') }}"></script>
-<script src="{{ asset('js/modeljq.js') }}"></script>
+<script src="{{ asset('js/modal.js') }}"></script>
 
 <div class="card m-5">
     <div class="card-header">
@@ -69,19 +69,19 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="#UserDetailModel" data-toggle="modal" class="open-UserDetailModel" data-photo="{{asset($user->profile)}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-createuserid="{{$user->create_user_id}}" data-updateduserid="{{$user->updated_user_id}}" data-createddate="{{$user->created_at}}" data-updateddate="{{$user->updated_at}}">{{$user->id}}</a></td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->create_user_id}}</td>
-                        <td>{{$user->type}}</td>
-                        <td>{{$user->phone}}</td>
-                        <td>{{$user->dob}}</td>
-                        <td>{{$user->address}}</td>
-                        <td>{{$user->created_at}}</td>
-                        <td>{{$user->updated_at}}</td>
+                        <td><a href="#UserDetailModel" data-toggle="modal" class="open-UserDetailModel" data-photo="{{ asset($user->profile) }}" data-name="{{ $user->name }}" data-type="{{ $user->type }}" data-email="{{ $user->email }}" data-phone="{{ $user->phone }}" data-dob="{{ $user->dob }}" data-address="{{ $user->address }}" data-createuserid="{{ $user->create_user_id }}" data-updateduserid="{{ $user->updated_user_id }}" data-createddate="{{ $user->created_at }}" data-updateddate="{{ $user->updated_at }}">{{ $user->id }}</a></td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->create_user_id }}</td>
+                        <td>{{ $user->type }}</td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->dob }}</td>
+                        <td>{{ $user->address }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->updated_at }}</td>
                         <td class="d-flex justify-content-center p-3">
-                            <a class="btn btn-warning mr-3" href="{{route('user.edit', $user->id)}}">Edit</a>
-                            <button class="btn btn-danger" href="#" data-target="#UserDeleteModel" data-toggle="modal" data-id="{{$user->id}}" data-name="{{$user->name}}" data-type="{{$user->type}}" data-email="{{$user->email}}" data-phone="{{$user->phone}}" data-dob="{{$user->dob}}" data-address="{{$user->address}}" data-address="{{$user->address}}">Delete</button>
+                            <a class="btn btn-warning mr-3" href="{{ route('user.edit', $user->id) }}">Edit</a>
+                            <button class="btn btn-danger" href="#" data-target="#UserDeleteModel" data-toggle="modal" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-type="{{ $user->type }}" data-email="{{ $user->email }}" data-phone="{{ $user->phone }}" data-dob="{{ $user->dob }}" data-address="{{ $user->address }}" data-address="{{ $user->address }}">Delete</button>
                         </td>
                     </tr>
                     <div class="modal fade" id="UserDeleteModel">
@@ -93,7 +93,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="{{route('user.destroy', $user->id) }}" method="POST">
+                                <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                     <div class="modal-body">
                                         <input type="hidden" name="user_id" id="user_id">
                                         <div class="form-group row">
