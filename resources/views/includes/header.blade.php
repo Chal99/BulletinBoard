@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{url('/')}}">Bulletin Board</a>
+            <a class="nav-link" href="{{ url('/') }}">Bulletin Board</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('user.index')}}">Users</a>
+            <a class="nav-link" href="{{ route('user.index') }}">Users</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('post.index')}}">Posts</a>
+            <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">

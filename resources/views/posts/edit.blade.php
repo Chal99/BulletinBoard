@@ -20,16 +20,16 @@
     </div>
     @endif
     <div class="card-body">
-        <form action="{{ route('post.update',$post->id) }}" id="post-form" method="POST">
+        <form action="{{ route('post.update', $post->id) }}" id="post-form" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label>Title <span>*</span></label>
-                <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
+                <input type="text" name="title" id="title" class="form-control" value="{{ $post->title }}">
             </div>
             <div class="form-group">
                 <label>Description <span>*</span></label>
-                <textarea class="form-control" id="description" name="description" rows="3">{{$post->description}}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ $post->description }}</textarea>
             </div>
             <div class="custom-control custom-switch">
                 <input type="hidden" name="status" value="0" id="status" />

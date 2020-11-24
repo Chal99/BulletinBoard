@@ -17,7 +17,7 @@
     </div>
     @endif
     <div class="card-body">
-        <form action="{{url('/user/confirmation')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/user/confirmation') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label>Name</label>
@@ -66,5 +66,4 @@
         </form>
     </div>
 </div>
-
 @endsection

@@ -145,4 +145,3 @@ $(document).on("click", ".open-PostDetailModel", function () {
     $(".modal-body #created-date").val(createddate);
     $(".modal-body #updated-date").val(updateddate);
 });
-

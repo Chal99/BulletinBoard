@@ -149,7 +149,8 @@ class UserController extends Controller
         $t = Auth::user()->type;
         if ($t == 0) {
             $type = 'Admin';
-        } else {
+        } 
+        else {
             $type = 'User';
         }
         $email = Auth::user()->email;

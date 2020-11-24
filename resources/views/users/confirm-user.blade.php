@@ -23,26 +23,26 @@
                 <label>Profile</label>
                 <div class="col-sm-12 mr-auto">
                     <div class="col-sm-12 mr-auto">
-                        <input type="hidden" name="profile" value="{{$image}}">
-                        <img src="{{asset($image)}}" name="profile" alt="profile" class="img-thumbnail rounded mx-auto d-block">
+                        <input type="hidden" name="profile" value="{{ $image }}">
+                        <img src="{{ asset($image) }}" name="profile" alt="profile" class="img-thumbnail rounded mx-auto d-block">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" value="{{$name}}">
+                <input type="text" name="name" class="form-control" value="{{ $name }}">
             </div>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="text" class="form-control" name="email" value="{{$email}}">
+                <input type="text" class="form-control" name="email" value="{{ $email }}">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" value="{{$password}}">
+                <input type="password" name="password" class="form-control" value="{{ $password }}">
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control" value="{{$confirmpassword}}">
+                <input type="password" name="confirmpassword" class="form-control" value="{{ $confirmpassword }}">
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
@@ -54,19 +54,19 @@
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input type="text" class="form-control" name="phone" value="{{$phone}}">
+                <input type="text" class="form-control" name="phone" value="{{ $phone }}">
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
-                <input type="date" name="dob" class="form-control" value="{{$dob}}">
+                <input type="date" name="dob" class="form-control" value="{{ $dob }}">
             </div>
             <div class="form-group">
                 <label>Address</label>
-                <textarea class="form-control" name="address" rows="3">{{$address}}</textarea>
+                <textarea class="form-control" name="address" rows="3">{{ $address }}</textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
-                <a type="button" href="{{ route('user.create') }}" class="btn btn-primary">Cancel</button>
+                <a href="{{ route('user.create') }}" class="btn btn-primary">Cancel</button>
             </div>
         </form>
     </div>
