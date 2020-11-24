@@ -7,6 +7,7 @@
     </div>
     <div class="card-body">
         <div class="container">
+
             <div class="form-group row">
                 <div class="col-sm-12 m-auto">
                     <img src="{{asset($profile)}}" width="620" alt="profile" class="img-thumbnail rounded mx-auto d-block">
@@ -55,10 +56,9 @@
                 </div>
             </div>
             <div class="form-group d-flex justify-content-center">
-                <a class="btn btn-primary" href="#">Edit Profile</a>
+                <a href="{{route('user.edit', Auth::user()->id)}}" class="btn btn-primary">Edit Profile</a>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

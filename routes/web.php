@@ -23,13 +23,9 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user/change-password', 'UserController@change_password')->name('user.change_password');
 Route::get('/user/profile', 'UserController@profile')->name('user.profile');
-
 Route::resource('/user', 'UserController');
 Route::post('/user/confirmation', 'UserController@confirmation');
 Route::post('/user/update-password', 'UserController@update_password');
-Route::post('/user/create-back', 'UserController@create_back');
-
-
 
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 

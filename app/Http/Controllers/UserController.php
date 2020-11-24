@@ -143,6 +143,7 @@ class UserController extends Controller
      */
     public function profile()
     {
+        $id = Auth::user()->id;
         $profile = Auth::user()->profile;
         $name = Auth::user()->name;
         $t = Auth::user()->type;
@@ -159,6 +160,7 @@ class UserController extends Controller
         return view(
             'profile.index',
             [
+                "id" => $id,
                 "name" => $name,
                 "email" => $email,
                 "type" => $type,

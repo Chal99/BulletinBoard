@@ -11,10 +11,6 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('post.index')}}">Posts</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('user.change_password')}}">Change Password</a>
-        </li>
-
     </ul>
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->

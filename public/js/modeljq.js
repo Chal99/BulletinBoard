@@ -1,7 +1,24 @@
+$(document).ready(function() {
+    $("#resetBtn").click(function() {
+        /* Single line Reset function executes on click of Reset Button */
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("type-selected").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("dob").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("profile").src = "";
+        document.getElementById("profile").alt = "profile reseted";
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("status").value = "";
+    });
 
-$(document).ready(function(){
-    $(".reset_btn").click(function(){
-        $("#user_edit").trigger("reset");
+    $("#resetBtnPost").click(function() {
+        /* Single line Reset function executes on click of Reset Button */
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("status").value = "";
     });
 });
 $(function () {

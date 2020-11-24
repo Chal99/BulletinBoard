@@ -53,9 +53,16 @@ class UserDao implements UserDaoInterface
             $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
             $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
             $user->profile = '/storage/' . $file_path;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->type = $request->type;
+            $user->phone = $request->phone;
+            $user->dob = $request->dob;
+            $user->address = $request->address;
             return $user->update();
         }
-        return $user->update();
+        return $user->update($request->all());
     }
     /**
      * Update User Password
