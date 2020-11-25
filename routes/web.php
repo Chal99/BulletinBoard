@@ -35,8 +35,13 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     })->name('upload-post');
 
     // Web Routes for Post
+    Route::get('/post/upload-file', 'PostController@upload_index')->name('post.upload');
+    Route::post('/post/uploaded', 'PostController@importExcelCSV');
     Route::post('/user/back_from_confirm', 'PostController@cancel_btn')->name('post.cancel_btn');
     Route::post('/post/confirmation', 'PostController@confirmation');
     Route::resource('/post', 'PostController');
-   
+
+
+
+    
 });
