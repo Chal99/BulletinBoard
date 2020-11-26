@@ -40,8 +40,5 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     Route::post('/user/back_from_confirm', 'PostController@cancel_btn')->name('post.cancel_btn');
     Route::post('/post/confirmation', 'PostController@confirmation');
     Route::resource('/post', 'PostController');
-
-
-
     
 });
