@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -41,10 +42,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('users.create');
+        return view('users.create',["name"=>'',"email"=>'']);
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($name,$email)
+    {
+        return view('users.create',["name"=>$name,"email"=>$email]);
+    }
+
 
     /**
      * Get data for confirmation page 
@@ -65,7 +77,6 @@ class UserController extends Controller
             'address' => 'required',
         ]);
         if ($request->profile) {
-
             $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
             $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
             return view(
@@ -80,6 +91,22 @@ class UserController extends Controller
                     "dob" => $request->dob,
                     "address" => $request->address,
                     "image" => '/storage/' . $file_path
+                ]
+            );
+        }
+        if($request->profile_new){
+            return view(
+                'users.confirm-user',
+                [
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "password" => $request->password,
+                    "confirmpassword" => $request->confirmpassword,
+                    "type" => $request->type,
+                    "phone" => $request->phone,
+                    "dob" => $request->dob,
+                    "address" => $request->address,
+                    "image" => $request->profile_new
                 ]
             );
         }
@@ -111,17 +138,7 @@ class UserController extends Controller
                 break;
 
             case 'cancel':
-                return view('users.create', [
-                    "name" => $request->name,
-                    "email" => $request->email,
-                    "password" => $request->password,
-                    "confirmpassword" => $request->confirmpassword,
-                    "type" => $request->type,
-                    "phone" => $request->phone,
-                    "dob" => $request->dob,
-                    "address" => $request->address,
-                    "image" => $request->profile,
-                ]);
+                return redirect()->route('user.create')->withInput($request->all());
                 break;
         }
     }

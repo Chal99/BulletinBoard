@@ -84,10 +84,7 @@ class PostController extends Controller
                 break;
 
             case 'cancel':
-                return view('posts.create', [
-                    "title" => $request->title,
-                    "description" => $request->description,
-                ]);
+                return redirect()->route('post.create')->withInput($request->all());
                 break;
         }
     }

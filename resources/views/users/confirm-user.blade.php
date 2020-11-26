@@ -30,43 +30,45 @@
             </div>
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" value="{{ $name }}">
+                <input type="text" name="name" class="form-control" value="{{ $name }}" readonly />
             </div>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="text" class="form-control" name="email" value="{{ $email }}">
+                <input type="text" class="form-control" name="email" value="{{ $email }}" readonly />
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" value="{{ $password }}">
+                <input type="text" name="password" class="form-control" value="{{ $password }}"readonly />
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control" value="{{ $confirmpassword }}">
+                <input type="text" name="confirmpassword" class="form-control" value="{{ $confirmpassword }}" readonly />
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
-                <select class="form-control" name="type" id="type-selected">
-                    <option disable>Please Select Type</option>
-                    <option value="0" id="type" <?php echo ($type == 0 ? 'selected' : '') ?>>User</option>
-                    <option value="1" id="type" <?php echo ($type == 1 ? 'selected' : '') ?>>Admin</option>
-                </select>
+                @if ($type==0)
+                <input type="text" class="form-control" value="User" readonly />
+                <input type="hidden" name="type" value="0">
+                @else
+                <input type="text" class="form-control" value="Admin" readonly />
+                <input type="hidden" name="type" value="1">
+                @endif
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input type="text" class="form-control" name="phone" value="{{ $phone }}">
+                <input type="text" class="form-control" name="phone" value="{{ $phone }}" readonly />
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
-                <input type="date" name="dob" class="form-control" value="{{ $dob }}">
+                <input type="date" name="dob" class="form-control" value="{{ $dob }}" readonly />
             </div>
             <div class="form-group">
                 <label>Address</label>
-                <textarea class="form-control" name="address" rows="3">{{ $address }}</textarea>
+                <textarea class="form-control" name="address" rows="3" readonly >{{ $address }}</textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
-                <a href="{{ route('user.create') }}" class="btn btn-primary">Cancel</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-primary">Cancel</button>    
             </div>
         </form>
     </div>

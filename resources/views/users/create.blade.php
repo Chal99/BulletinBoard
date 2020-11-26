@@ -21,7 +21,7 @@
             @csrf
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                <input type="text" name="name" class="form-control" value="{{ old('name') }}" value="{{<?php echo ($name != null ? '$name' : '') ?>}}">
             </div>
             <div class="form-group">
                 <label>Email Address</label>
@@ -33,19 +33,19 @@
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control">
+                <input type="password" name="confirmpassword" class="form-control" value="{{ old('password') }}">
             </div>
             <div class="form-group">
                 <label for="type-selected">Type</label>
                 <select class="form-control" name="type" value="{{ old('type') }}">
                     <option disable>Please Select Type</option>
-                    <option value="0" id="type" <?php echo (old('type')== 0 ? 'selected' : '') ?>>User</option>
-                    <option value="1" id="type" <?php echo (old('type')== 1 ? 'selected' : '') ?>>Admin</option>
+                    <option value="0" id="type" <?php echo (old('type') == 0 ? 'selected' : '') ?>>User</option>
+                    <option value="1" id="type" <?php echo (old('type') == 1 ? 'selected' : '') ?>>Admin</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input type="text" name="phone" class="form-control"value="{{ old('phone') }}">
+                <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
@@ -56,8 +56,18 @@
                 <textarea class="form-control" name="address">{{ old('address') }}</textarea>
             </div>
             <div class="form-group">
+                <label>Old Profile</label>
+                @if (old('profile'))
+                <div class="col-sm-12 mr-auto">
+                    <img src="{{ asset(old('profile')) }}" alt="profile" class="img-thumbnail rounded mx-auto d-block">
+                    <input type="hidden" name="profile_new" value="{{ old('profile') }}">
+                </div>
                 <label>Profile</label>
                 <input type="file" name="profile" class="form-control-file">
+                @else
+                <label>Profile</label>
+                <input type="file" name="profile" class="form-control-file">
+                @endif
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button class="btn btn-success mr-5" type="submit">Register</button>
