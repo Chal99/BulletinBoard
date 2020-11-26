@@ -21,15 +21,15 @@
             @csrf
             <div class="form-group">
                 <label>Title </label>
-                <input type="text" name="title" class="form-control" value="{{ $title }}">
+                <input type="text" name="title" class="form-control" value="{{ $title }}" readonly />
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" name="description" rows="3">{{ $description }}</textarea>
+                <textarea class="form-control" name="description" rows="3" readonly>{{ $description }}</textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" name="action" value="save" class="btn btn-primary mr-5">Confirm</button>
-                <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-primary">Cancel</button>    
             </div>
         </form>
     </div>
