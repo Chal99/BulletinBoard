@@ -25,6 +25,14 @@ interface UserDaoInterface
      */
     public function updateUser($request, User $user);
     /**
+     * Update User
+     * @param Illuminate\Http\Request $request
+     *  @param App\Models\User $user
+     * @return array userList
+     */
+    public function updateProfileUser($request, User $user);
+    
+    /**
      * Update User Password
      * @param Illuminate\Http\Request $request
      * @return array userList

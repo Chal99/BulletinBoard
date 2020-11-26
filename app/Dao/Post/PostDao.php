@@ -3,11 +3,24 @@
 namespace App\Dao\Post;
 
 use App\Contracts\Dao\Post\PostDaoInterface;
+use App\Contracts\Services\Post\PostServiceInterface;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class PostDao implements PostDaoInterface
 {
+    private $postService;
+
+  /**
+   * Class Constructor
+   * @param OperatorPostDaoInterface
+   * @return
+   */
+  public function __construct(PostServiceInterface $postService)
+  {
+    $this->postService = $postService;
+  }
+
     /**
      * Get Post List
      * @return array postList
@@ -16,6 +29,7 @@ class PostDao implements PostDaoInterface
     {
         return Post::get();
     }
+
     /**
      * Store Post
      * @param Illuminate\Http\Request $request
@@ -30,6 +44,7 @@ class PostDao implements PostDaoInterface
         $post->updated_user_id = Auth::user()->id;
         return $post->save();
     }
+
     /**
      * Update Post
      * @param Illuminate\Http\Request $request
@@ -40,6 +55,7 @@ class PostDao implements PostDaoInterface
     {
         $post->update($request->all());
     }
+
     /**
      * Delete Post
      * @param Illuminate\Http\Request $request
@@ -48,4 +64,5 @@ class PostDao implements PostDaoInterface
     {
         Post::find($request->post_id)->delete();
     }
+    
 }

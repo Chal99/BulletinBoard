@@ -6,10 +6,14 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Contracts\Services\Post\PostServiceInterface;
 use App\Http\Controllers\Controller;
+
+use App\Http\Requests\PostRequest;
+use App\Http\Requests\PostUpdateRequest;
+use App\Http\Requests\ImportExcelCSVRequest;
 use App\Imports\PostsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Rules;
+
 
 class PostController extends Controller
 {
@@ -22,8 +26,10 @@ class PostController extends Controller
      */
     public function __construct(PostServiceInterface $postInterface)
     {
+        $this->middleware('auth')->except(['index']);
         $this->postInterface = $postInterface;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,14 +58,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function confirmation(Request $request)
+    public function confirmation(PostRequest $request)
     {
-        //validate the form
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
         return view('posts.confirm-post', ["title" => $request->title, "description" => $request->description]);
     }
 
@@ -73,11 +73,6 @@ class PostController extends Controller
     {
         switch ($request->input('action')) {
             case 'save':
-                $request->validate([
-                    'title' => 'required',
-                    'description' => 'required',
-                ]);
-
                 $this->postInterface->storePost($request);
                 return redirect()->route('post.index')
                     ->with('success', 'Product created successfully.');
@@ -118,15 +113,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'status' => 'required'
-        ]);
         $this->postInterface->updatePost($request, $post);
-
         return redirect()->route('post.index')
             ->with('success', 'Post Confirm Successfully');
     }
@@ -139,7 +128,7 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-        $this->userInterface->destroyUser($request);
+        $this->postInterface->destroyPost($request);
         return redirect()->route('post.index')
             ->with('success', 'Post deleted successfully');
     }
@@ -153,32 +142,29 @@ class PostController extends Controller
     {
         return view('posts.upload-post');
     }
-    
+
     /**
      * Get csv data and save to database
      * 
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Support\Collection
      */
-    public function importExcelCSV(Request $request)
+    public function importExcelCSV(ImportExcelCSVRequest $request)
     {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
         $line = 0;
         $file_path = $request->file->path();
         if (($handle = fopen($file_path, "r")) !== FALSE) {
 
             // Get first row of the file as the header
-            $header = fgetcsv($handle , 0, ',');
-            if(count($header)>2){
+            $header = fgetcsv($handle, 0, ',');
+            if (count($header) > 2) {
                 return redirect()->route('post.upload')->with('fail', 'Only Title and Description Must Have');
             }
             $title_column = $this->getColumnNameByValue($header, 'title');
             $description_column = $this->getColumnNameByValue($header, 'description');
 
             // Find data
-            if($title_column == 'title' && $description_column != 'description'){
+            if ($title_column == 'title' && $description_column != 'description') {
                 while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     $line++;
 
@@ -200,14 +186,14 @@ class PostController extends Controller
                     }
                 }
                 fclose($handle);
-            }
-            else{
+            } else {
                 return redirect()->route('post.upload')->with('fail', 'Title and Description column must have');
             }
         }
         Excel::import(new PostsImport, $request->file('file'));
         return redirect()->route('post.upload')->with('status', 'The file has been imported');
     }
+
     /**
      * Attempts to find a value in array or returns empty string
      * 
@@ -215,8 +201,8 @@ class PostController extends Controller
      * @param string $key   
      *
      */
-    private function getColumnNameByValue($array, $value) 
+    private function getColumnNameByValue($array, $value)
     {
-        return in_array($value, $array)? $value : '';
+        return in_array($value, $array) ? $value : '';
     }
 }

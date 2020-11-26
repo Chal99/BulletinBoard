@@ -3,14 +3,25 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">Bulletin Board</a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.index') }}">Users</a>
-        </li>
-
+        @if (!Auth::check())
         <li class="nav-item">
             <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
         </li>
+        @endif
+        @if (Auth::check())
+        @if(Auth::user()->type==1)
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+        </li>
+        @else
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">Users</a>
+        </li>
+        @endif
+        @endif
     </ul>
     <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
@@ -33,7 +44,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                <a class="dropdown-item" href="{{ route('profile.index') }}">
                     Profile
                 </a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

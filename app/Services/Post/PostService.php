@@ -55,4 +55,5 @@ class PostService implements PostServiceInterface
   {
     return $this->postDao->destroyPost($request);
   }
+
 }

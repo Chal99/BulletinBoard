@@ -47,10 +47,10 @@
             <div class="form-group">
                 <label for="type-selected">Type</label>
                 @if ($type==0)
-                <input type="text" class="form-control" value="User" readonly />
+                <input type="text" class="form-control" value="Admin" readonly />
                 <input type="hidden" name="type" value="0">
                 @else
-                <input type="text" class="form-control" value="Admin" readonly />
+                <input type="text" class="form-control" value="User" readonly />
                 <input type="hidden" name="type" value="1">
                 @endif
             </div>

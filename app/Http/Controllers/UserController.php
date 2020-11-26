@@ -22,6 +22,7 @@ class UserController extends Controller
      */
     public function __construct(UserServiceInterface $userInterface)
     {
+        $this->middleware('IsAdmin');
         $this->userInterface = $userInterface;
     }
     /**
@@ -44,19 +45,8 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('users.create',["name"=>'',"email"=>'']);
+        return view('users.create');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cancel($name,$email)
-    {
-        return view('users.create',["name"=>$name,"email"=>$email]);
-    }
-
 
     /**
      * Get data for confirmation page 
@@ -67,7 +57,7 @@ class UserController extends Controller
     public function confirmation(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:users,name',
             'email' => 'required',
             'password' => 'required',
             'confirmpassword' => 'required_with:password|same:password',
@@ -94,7 +84,7 @@ class UserController extends Controller
                 ]
             );
         }
-        if($request->profile_new){
+        if ($request->profile_new) {
             return view(
                 'users.confirm-user',
                 [
@@ -122,17 +112,6 @@ class UserController extends Controller
     {
         switch ($request->input('action')) {
             case 'save':
-                //validate the form
-                $request->validate([
-                    'name' => 'required',
-                    'email' => 'required',
-                    'password' => 'required',
-                    'confirmpassword' => 'required_with:password|same:password',
-                    'type' => 'required',
-                    'phone' => 'required',
-                    'dob' => 'required',
-                    'address' => 'required',
-                ]);
                 $this->userInterface->storeUser($request);
                 return redirect()->route('user.index')->with('success', 'User Created Successfully.');
                 break;
@@ -153,43 +132,6 @@ class UserController extends Controller
     {
         //
     }
-    /**
-     * Display the specified resource with data.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-        $id = Auth::user()->id;
-        $profile = Auth::user()->profile;
-        $name = Auth::user()->name;
-        $t = Auth::user()->type;
-        if ($t == 0) {
-            $type = 'Admin';
-        } 
-        else {
-            $type = 'User';
-        }
-        $email = Auth::user()->email;
-        $phone = Auth::user()->phone;
-        $dob = Auth::user()->dob;
-        $email = Auth::user()->email;
-        $address = Auth::user()->address;
-        return view(
-            'profile.index',
-            [
-                "id" => $id,
-                "name" => $name,
-                "email" => $email,
-                "type" => $type,
-                "phone" => $phone,
-                "dob" => $dob,
-                "address" => $address,
-                "profile" => $profile
-            ]
-        );
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
