@@ -65,6 +65,38 @@ class UserDao implements UserDaoInterface
         return $user->update($request->all());
     }
     /**
+     * Update User
+     * @param Illuminate\Http\Request $request
+     * @param App\Model\User $user
+     * @return array userList
+     */
+    public function updateProfileUser($request, User $user)
+    {
+        $user= Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->type = $request->type;
+        $user->phone = $request->phone;
+        $user->dob = $request->dob;
+        $user->address = $request->address;
+
+        if ($request->profile_new != null) {
+            //code for remove old file
+            $path = public_path();
+            $file_old = $path . Auth::user()->profile;
+            unlink($file_old);
+            $file_name = $request->get('name') . '-' . $request->file('profile_new')->getClientOriginalName();
+            $file_path = $request->file('profile_new')->storeAs('uploads', $file_name, 'public');
+            $user->profile = '/storage/' . $file_path;
+            return $user->update();
+        }
+        else{
+            $user->profile= $request->profile;
+            return $user->update();
+        }
+    }
+    /**
      * Update User Password
      * @param Illuminate\Http\Request $request
      */

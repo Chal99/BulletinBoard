@@ -21,24 +21,29 @@ Route::get('/', function () {
 
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Web Routes for User
-Route::get('/user/change-password', 'UserController@change_password')->name('user.change_password');
-Route::get('/user/profile', 'UserController@profile')->name('user.profile');
-Route::resource('/user', 'UserController');
-Route::post('/user/confirmation', 'UserController@confirmation');
-Route::post('/user/update-password', 'UserController@update_password');
+
+// Web Routes for profile
+Route::get('/user/profile', 'ProfileController@profile')->name('user.profile');
+Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+Route::resource('/profile', 'ProfileController');
+
+Route::get('/post/upload', 'PostController@uploadindex')->name('post.upload');
+Route::resource('/post', 'PostController');
+
 
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
 
-    Route::get('/post/upload-post', function () {
-        return view('posts.upload-post');
-    })->name('upload-post');
-
     // Web Routes for Post
-    Route::get('/post/upload-file', 'PostController@upload_index')->name('post.upload');
     Route::post('/post/uploaded', 'PostController@importExcelCSV');
     Route::post('/user/back_from_confirm', 'PostController@cancel_btn')->name('post.cancel_btn');
     Route::post('/post/confirmation', 'PostController@confirmation');
-    Route::resource('/post', 'PostController');
-    
+    // Route::get('/post/upload-post', function () {
+    //     return view('posts.upload-post');
+    // })->name('upload-post');
+
+    // Web Routes for User
+    Route::get('/user/change-password', 'UserController@change_password')->name('user.change_password');
+    Route::post('/user/confirmation', 'UserController@confirmation');
+    Route::post('/user/update-password', 'UserController@update_password');
+    Route::resource('/user', 'UserController');
 });

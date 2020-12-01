@@ -20,5 +20,6 @@ class IsAdmin
         if (Auth::user()->type == 0) {
             return $next($request);
         }
+        return redirect('/');
     }
 }

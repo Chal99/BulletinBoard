@@ -74,9 +74,9 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->create_user_id }}</td>
                         @if ($user->type == 0)
-                        <td>User</td>
-                        @else
                         <td>Admin</td>
+                        @else
+                        <td>User</td>
                         @endif
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->dob }}</td>

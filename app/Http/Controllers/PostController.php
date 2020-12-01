@@ -10,6 +10,8 @@ use App\Imports\PostsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Rules;
+use App\Http\Requests\PostConfirmationRequest;
+use App\Http\Requests\PostUpdateRequest;
 
 class PostController extends Controller
 {
@@ -22,6 +24,7 @@ class PostController extends Controller
      */
     public function __construct(PostServiceInterface $postInterface)
     {
+        $this->middleware('auth')->except(['index']);
         $this->postInterface = $postInterface;
     }
     /**
@@ -52,14 +55,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function confirmation(Request $request)
+    public function confirmation(PostConfirmationRequest $request)
     {
-        //validate the form
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
         return view('posts.confirm-post', ["title" => $request->title, "description" => $request->description]);
     }
 
@@ -69,18 +66,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(PostConfirmationRequest $request, Post $post)
     {
         switch ($request->input('action')) {
             case 'save':
-                $request->validate([
-                    'title' => 'required',
-                    'description' => 'required',
-                ]);
-
                 $this->postInterface->storePost($request);
-                return redirect()->route('post.index')
-                    ->with('success', 'Product created successfully.');
+                return redirect()->route('post.index')->with('success', 'Product created successfully.');
                 break;
 
             case 'cancel':
@@ -118,17 +109,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'status' => 'required'
-        ]);
         $this->postInterface->updatePost($request, $post);
-
-        return redirect()->route('post.index')
-            ->with('success', 'Post Confirm Successfully');
+        return redirect()->route('post.index')->with('success', 'Post Confirm Successfully');
     }
 
     /**
@@ -140,8 +124,7 @@ class PostController extends Controller
     public function destroy(Request $request)
     {
         $this->userInterface->destroyUser($request);
-        return redirect()->route('post.index')
-            ->with('success', 'Post deleted successfully');
+        return redirect()->route('post.index')->with('success', 'Post deleted successfully');
     }
 
     /** 
@@ -149,7 +132,7 @@ class PostController extends Controller
      * 
      * @return \Illuminate\Support\Collection
      */
-    public function upload_index()
+    public function uploadindex()
     {
         return view('posts.upload-post');
     }
@@ -178,7 +161,7 @@ class PostController extends Controller
             $description_column = $this->getColumnNameByValue($header, 'description');
 
             // Find data
-            if($title_column == 'title' && $description_column != 'description'){
+            if($title_column == 'title' && $description_column == 'description'){
                 while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     $line++;
 
