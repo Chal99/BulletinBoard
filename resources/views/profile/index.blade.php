@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="form-group d-flex justify-content-center">
-                <a href="{{ route('user.edit', Auth::user()->id) }}" class="btn btn-primary">Edit Profile</a>
+                <a href="{{ route('profile.edit', Auth::user()->id) }}" class="btn btn-primary">Edit Profile</a>
             </div>
         </div>
     </div>

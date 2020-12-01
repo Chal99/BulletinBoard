@@ -39,8 +39,8 @@
                 <label for="type-selected">Type</label>
                 <select class="form-control" name="type" value="{{ old('type') }}">
                     <option disable>Please Select Type</option>
-                    <option value="0" id="type" <?php echo (old('type') == 0 ? 'selected' : '') ?>>User</option>
-                    <option value="1" id="type" <?php echo (old('type') == 1 ? 'selected' : '') ?>>Admin</option>
+                    <option value="0" id="type" <?php echo (old('type') == 0 ? 'selected' : '') ?>>Admin</option>
+                    <option value="1" id="type" <?php echo (old('type') == 1 ? 'selected' : '') ?>>User</option>
                 </select>
             </div>
             <div class="form-group">

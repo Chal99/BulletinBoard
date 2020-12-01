@@ -14,7 +14,7 @@
     <div class="card-body">
         <div class="container d-flex justify-content-end">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-<?php echo (Illuminate\Support\Facades\Auth::check() == true ? '4' : '8') ?>">
                     <div class="input-group mb-3 border border-primary rounded">
                         <div class="input-group-prepend">
                             <span class="input-group-text ">Keyword :</span>
@@ -25,6 +25,7 @@
                 <div class="col-md-2">
                     <button class="btn btn-outline-primary" id="btnSearch"> Search </button>
                 </div>
+                @if(Auth::check())
                 <div class="col-md-2">
                     <a class="btn btn-outline-primary" href="{{ route('post.create') }}"> Create </a>
                 </div>
@@ -34,6 +35,7 @@
                 <div class="col-md-2">
                     <button type="button" class="btn btn-outline-primary"> Download </button>
                 </div>
+                @endif
             </div>
         </div>
         @if ($message = Session::get('success'))
@@ -48,7 +50,9 @@
                     <th>Post Description</th>
                     <th>Posted User</th>
                     <th>Posted Date</th>
+                    @if (Auth::check())
                     <th>Operation</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -58,10 +62,12 @@
                     <td>{{ $post->description }}</td>
                     <td>{{ $post->user->name }}</td>
                     <td>{{ $post->created_at }}</td>
+                    @if (Auth::check())
                     <td class="d-flex justify-content-center p-3">
                         <a class="btn btn-warning mr-3" href="{{ route('post.edit', $post->id) }}">Edit</a>
                         <button class="btn btn-danger" href="#" data-target="#PostDeleteModel" data-toggle="modal" data-id="{{ $post->id }}" data-title="{{ $post->title }}" data-description="{{ $post->description }}" data-status="{{ $post->status }}">Delete</button>
                     </td>
+                    @endif
                 </tr>
                 <div class="modal fade" id="PostDeleteModel">
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">

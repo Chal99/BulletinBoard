@@ -47,6 +47,16 @@ class UserService implements UserServiceInterface
         return $this->userDao->updateUser($request, $user);
     }
     /**
+     * Update User
+     * @param Illuminate\Http\Request $request
+     * @param App\Model\User $user
+     * @return array userList
+     */
+    public function updateProfileUser($request, User $user)
+    {
+        return $this->userDao->updateProfileUser($request, $user);
+    }
+    /**
      * Update User Password
      * @param Illuminate\Http\Request $request
      * @return array userList

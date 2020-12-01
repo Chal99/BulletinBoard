@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Symfony\Component\Console\Input\Input;
+use App\Http\Requests\UserConfirmationRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserUpdatePasswordRequest;
 
 class UserController extends Controller
 {
@@ -22,6 +25,7 @@ class UserController extends Controller
      */
     public function __construct(UserServiceInterface $userInterface)
     {
+        $this->middleware('IsAdmin')->except(['create','confirmation','store']);
         $this->userInterface = $userInterface;
     }
     /**
@@ -64,18 +68,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function confirmation(Request $request)
+    public function confirmation(UserConfirmationRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'confirmpassword' => 'required_with:password|same:password',
-            'type' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-        ]);
         if ($request->profile) {
             $file_name = $request->get('name') . '-' . $request->file('profile')->getClientOriginalName();
             $file_path = $request->file('profile')->storeAs('uploads', $file_name, 'public');
@@ -118,21 +112,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserConfirmationRequest $request)
     {
         switch ($request->input('action')) {
             case 'save':
-                //validate the form
-                $request->validate([
-                    'name' => 'required',
-                    'email' => 'required',
-                    'password' => 'required',
-                    'confirmpassword' => 'required_with:password|same:password',
-                    'type' => 'required',
-                    'phone' => 'required',
-                    'dob' => 'required',
-                    'address' => 'required',
-                ]);
                 $this->userInterface->storeUser($request);
                 return redirect()->route('user.index')->with('success', 'User Created Successfully.');
                 break;
@@ -153,42 +136,6 @@ class UserController extends Controller
     {
         //
     }
-    /**
-     * Display the specified resource with data.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-        $id = Auth::user()->id;
-        $profile = Auth::user()->profile;
-        $name = Auth::user()->name;
-        $t = Auth::user()->type;
-        if ($t == 0) {
-            $type = 'Admin';
-        } 
-        else {
-            $type = 'User';
-        }
-        $email = Auth::user()->email;
-        $phone = Auth::user()->phone;
-        $dob = Auth::user()->dob;
-        $email = Auth::user()->email;
-        $address = Auth::user()->address;
-        return view(
-            'profile.index',
-            [
-                "id" => $id,
-                "name" => $name,
-                "email" => $email,
-                "type" => $type,
-                "phone" => $phone,
-                "dob" => $dob,
-                "address" => $address,
-                "profile" => $profile
-            ]
-        );
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -208,17 +155,8 @@ class UserController extends Controller
      * @param   \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //validate the form
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'type' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-        ]);
         $this->userInterface->updateUser($request, $user);
         return redirect()->route('user.index')->with('success', 'User Updated Successfully.');
     }
@@ -240,14 +178,8 @@ class UserController extends Controller
      * @param   \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update_password(Request $request, User $user)
+    public function update_password(UserUpdatePasswordRequest $request, User $user)
     {
-        //validate the form
-        $request->validate([
-            'password' => ['required', new MatchOldPassword],
-            'new_psw' => 'required',
-            'new_confirm_psw' => 'required_with:new_psw|same:new_psw',
-        ]);
         $this->userInterface->updatePassword($request);
         return redirect()->route('user.index')->with('success', 'User Password Updated Successfully.');
     }
@@ -262,7 +194,6 @@ class UserController extends Controller
     public function destroy(Request $request, User $user)
     {
         $this->userInterface->destroyUser($request);
-        return redirect()->route('user.index')
-            ->with('success', 'User deleted successfully');
+        return redirect()->route('user.index')->with('success', 'User deleted successfully');
     }
 }
