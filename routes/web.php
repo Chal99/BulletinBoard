@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\API\PostApiController;
+use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,15 +22,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Web Routes for profile
 Route::get('/user/profile', 'ProfileController@profile')->name('user.profile');
 Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile.edit');
 Route::resource('/profile', 'ProfileController');
 
-Route::get('/post/upload', 'PostController@uploadindex')->name('post.upload');
-Route::resource('/post', 'PostController');
+Route::get('/post/upload', [PostController::class, 'uploadindex'])->name('post.upload');
+Route::resource('/post', PostController::class);
 
 
 Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
@@ -46,4 +47,5 @@ Route::group(['middleware' => ['prevent-back-history', 'auth']], function () {
     Route::post('/user/confirmation', 'UserController@confirmation');
     Route::post('/user/update-password', 'UserController@update_password');
     Route::resource('/user', 'UserController');
+
 });

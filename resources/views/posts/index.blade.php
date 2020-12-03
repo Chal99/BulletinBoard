@@ -61,7 +61,7 @@
                     <td><a href="#PostDetailModel" data-toggle="modal" class="open-PostDetailModel" data-title="{{ $post->title }}" data-description="{{ $post->description }}" data-status="{{ $post->status }}" data-createuserid="{{ $post->create_user_id }}" data-updateduserid="{{ $post->updated_user_id }}" data-createddate="{{ $post->created_at}} " data-updateddate="{{ $post->updated_at }}">{{ $post->title }}</a></td>
                     <td>{{ $post->description }}</td>
                     <td>{{ $post->user->name }}</td>
-                    <td>{{ $post->created_at }}</td>
+                    <td>{{ Carbon\Carbon::parse($post->created_at)->format('d-m-Y') }}</td>
                     @if (Auth::check())
                     <td class="d-flex justify-content-center p-3">
                         <a class="btn btn-warning mr-3" href="{{ route('post.edit', $post->id) }}">Edit</a>
