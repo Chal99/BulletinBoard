@@ -43,18 +43,8 @@ class User extends Authenticatable
     /**
      * Create relationship with user and post
      */
-    public function posts()
+    public function user()
     {
-        return $this->hasMany(Post::class, 'create_user_id');
-    }
-
-    public function getCreatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
-    }
-
-    public function getUpdatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+        return $this->belongsTo(User::class, 'create_user_id');
     }
 }

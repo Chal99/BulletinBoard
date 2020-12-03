@@ -14,6 +14,6 @@ class PostAPIDao implements PostAPIDaoInterface
      */
     public function getPostList()
     {
-        return Post::all();
+        return Post::with('user')->get();
     }
 }

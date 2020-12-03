@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
 use App\Http\Controllers\API\PostApiController;
+use App\Http\Controllers\API\UserApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/test',function(){
 });
 
 Route::get('/post/list',[PostApiController::class, 'index']);
+
+Route::get('/user/list',[UserApiController::class, 'index']);
