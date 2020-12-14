@@ -27,5 +27,28 @@ class PostAPIService implements PostAPIServiceInterface
   {
     return $this->postDao->getPostList();
   }
-  
+  /**
+   * Store Post
+   * @return array $postList
+   */
+  public function storePost($request)
+  {
+    return $this->postDao->storePost($request);
+  }
+  /**
+   * Update Post
+   * @return array $postList
+   */
+  public function updatePost($request, $post)
+  {
+    return $this->postDao->updatePost($request, $post);
+  }
+  /**
+   * Delete Post
+   * @return array $postList
+   */
+  public function deletePost($post)
+  {
+    return $this->postDao->deletePost($post);
+  }
 }

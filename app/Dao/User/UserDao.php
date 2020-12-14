@@ -37,6 +37,7 @@ class UserDao implements UserDaoInterface
         $user->updated_user_id = '1';
         return $user->save();
     }
+   
     /**
      * Update User
      * @param Illuminate\Http\Request $request

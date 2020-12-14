@@ -27,6 +27,7 @@ class PostController extends Controller
         $this->middleware('auth')->except(['index']);
         $this->postInterface = $postInterface;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,6 +50,7 @@ class PostController extends Controller
     {
         return view('posts.create', ["title" => '', "description" => '']);
     }
+
     /**
      * Get data for confirmation page 
      *
@@ -191,6 +193,7 @@ class PostController extends Controller
         Excel::import(new PostsImport, $request->file('file'));
         return redirect()->route('post.upload')->with('status', 'The file has been imported');
     }
+    
     /**
      * Attempts to find a value in array or returns empty string
      * 

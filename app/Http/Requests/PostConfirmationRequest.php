@@ -24,7 +24,7 @@ class PostConfirmationRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|unique:posts,title',
             'description' => 'required',
         ];
     }

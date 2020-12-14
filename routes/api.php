@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
 use App\Http\Controllers\API\PostApiController;
 use App\Http\Controllers\API\UserApiController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,11 @@ Route::get('/test',function(){
     return response()->json(['message' => 'HelloWorld']);
 });
 
-Route::get('/post/list',[PostApiController::class, 'index']);
-
-Route::get('/user/list',[UserApiController::class, 'index']);
+Route::post('/post/import',[PostApiController::class,'importExcelCSV']);
+Route::apiResource('post',PostApiController::class);
+Route::post('/user/image',[UserApiController::class,'storeImage']);
+Route::get('/user/image/confirm',[UserApiController::class,'ImageConfirm']);
+Route::post('/login',[UserApiController::class,'login']);
+Route::post('/user/{user}',[UserApiController::class,'update']);
+Route::put('/user/changepassword/{user}',[UserApiController::class,'changePassword']);
+Route::apiResource('user',UserApiController::class);

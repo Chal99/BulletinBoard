@@ -27,5 +27,29 @@ class UserAPIService implements UserAPIServiceInterface
     {
         return $this->userDao->getUserList();
     }
+    /**
+   * Store User
+   * @return array $userList
+   */
+  public function storeUser($request)
+  {
+    return $this->userDao->storeUser($request);
+  }
+  /**
+   * Update User
+   * @return array $userList
+   */
+  public function updateUser($request, $user)
+  {
+    return $this->userDao->updateUser($request, $user);
+  }
+  /**
+   * Delete User
+   * @return array $userList
+   */
+  public function deleteUser($user)
+  {
+    return $this->userDao->deleteUser($user);
+  }
     
 }

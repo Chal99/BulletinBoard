@@ -20,8 +20,8 @@ class PostsImport implements ToModel, WithHeadingRow
         return new Post([
             'title'     => $row['title'],
             'description'    => $row['description'],
-            'create_user_id' => Auth::user()->id,
-            'updated_user_id' => Auth::user()->id,
+            'create_user_id' => 1,
+            'updated_user_id' => 1,
         ]);
     }
 }

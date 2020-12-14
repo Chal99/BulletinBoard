@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Rules\MatchOldPassword;
-use Symfony\Component\Console\Input\Input;
 use App\Http\Requests\UserConfirmationRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserUpdatePasswordRequest;
@@ -50,17 +46,6 @@ class UserController extends Controller
     {
         return view('users.create',["name"=>'',"email"=>'']);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cancel($name,$email)
-    {
-        return view('users.create',["name"=>$name,"email"=>$email]);
-    }
-
 
     /**
      * Get data for confirmation page 
