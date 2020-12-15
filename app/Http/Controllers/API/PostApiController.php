@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
+use App\Contracts\Services\API\PostAPIServiceInterface;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Contracts\Services\Post\PostServiceInterface;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Imports\PostsImport;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Rules;
 use App\Http\Requests\PostConfirmationRequest;
 use App\Http\Requests\PostUpdateRequest;
 
-class PostController extends Controller
+class PostApiController extends Controller
 {
     private $postInterface;
 
@@ -22,12 +21,10 @@ class PostController extends Controller
      *
      * @return void
      */
-    public function __construct(PostServiceInterface $postInterface)
+    public function __construct(PostAPIServiceInterface $postInterface)
     {
-        $this->middleware('auth')->except(['index']);
         $this->postInterface = $postInterface;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -35,31 +32,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postInterface->getPostList();
-        return view('posts.index', [
-            'posts' => $posts,
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('posts.create', ["title" => '', "description" => '']);
-    }
-
-    /**
-     * Get data for confirmation page 
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function confirmation(PostConfirmationRequest $request)
-    {
-        return view('posts.confirm-post', ["title" => $request->title, "description" => $request->description]);
+        return $this->postInterface->getPostList();
     }
 
     /**
@@ -68,77 +41,45 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostConfirmationRequest $request, Post $post)
+    public function store(Request $request)
     {
-        switch ($request->input('action')) {
-            case 'save':
-                $this->postInterface->storePost($request);
-                return redirect()->route('post.index')->with('success', 'Product created successfully.');
-                break;
-
-            case 'cancel':
-                return redirect()->route('post.create')->withInput($request->all());
-                break;
-        }
+        return $this->postInterface->storePost($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        return view('posts.edit', compact('post'));
+        return $post;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
-        $this->postInterface->updatePost($request, $post);
-        return redirect()->route('post.index')->with('success', 'Post Confirm Successfully');
+        return $this->postInterface->updatePost($request, $post);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Post $post)
     {
-        $this->userInterface->destroyUser($request);
-        return redirect()->route('post.index')->with('success', 'Post deleted successfully');
+        return $this->postInterface->deletePost($post);
     }
 
-    /** 
-     * Show the form for upload
-     * 
-     * @return \Illuminate\Support\Collection
-     */
-    public function uploadindex()
-    {
-        return view('posts.upload-post');
-    }
-    
     /**
      * Get csv data and save to database
      * 
@@ -191,9 +132,8 @@ class PostController extends Controller
             }
         }
         Excel::import(new PostsImport, $request->file('file'));
-        return redirect()->route('post.upload')->with('status', 'The file has been imported');
+        return Post::get();
     }
-    
     /**
      * Attempts to find a value in array or returns empty string
      * 
