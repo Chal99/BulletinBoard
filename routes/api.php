@@ -31,5 +31,5 @@ Route::post('/user/image',[UserApiController::class,'storeImage']);
 Route::get('/user/image/confirm',[UserApiController::class,'ImageConfirm']);
 Route::post('/login',[UserApiController::class,'login']);
 Route::post('/user/{user}',[UserApiController::class,'update']);
-Route::put('/user/changepassword/{user}',[UserApiController::class,'changePassword']);
+Route::post('/user/changepassword/{user}',[UserApiController::class,'changePassword']);
 Route::apiResource('user',UserApiController::class);

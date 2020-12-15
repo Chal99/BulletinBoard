@@ -68,7 +68,6 @@ class UserApiController extends Controller
      */
     public function changePassword(Request $request,User $user)
     {
-        
         $request->validate([
             'currentpassword'=>['required',function($attribute,$value,$fail) use($user){
                 if(!Hash::check($value,$user->password)){
@@ -78,7 +77,7 @@ class UserApiController extends Controller
             'newpassword'=>'required|min:6',
             'confirmpassword'=>'required_with:newpassword|same:newpassword'
         ]);
-        $user->password=$request->newpassword;
+        $user->password=Hash::make($request->newpassword);
         $user->update();
         return response()->json($request);
         
@@ -133,7 +132,6 @@ class UserApiController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // return $this->userInterface->updateUser($request, $user);
         $upload_path = public_path('/storage/upload');
         $file_name = $request->profile->getClientOriginalName();
         $generated_new_name = Time() . '-' . $file_name;
