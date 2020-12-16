@@ -19,6 +19,7 @@ class UserAPIService implements UserAPIServiceInterface
     {
         $this->userDao = $userDao;
     }
+   
     /**
      * Get User List
      * @return array $userList

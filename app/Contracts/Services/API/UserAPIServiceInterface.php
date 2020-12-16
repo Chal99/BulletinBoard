@@ -6,12 +6,12 @@ use App\Models\User;
 
 interface UserAPIServiceInterface
 {
-    /**
-     * Get User List
-     * @return array userList
-     */
-    public function getUserList();
-    /**
+  /**
+   * Get User List
+   * @return array userList
+   */
+  public function getUserList();
+  /**
    * Store User
    * @return array userList
    */
